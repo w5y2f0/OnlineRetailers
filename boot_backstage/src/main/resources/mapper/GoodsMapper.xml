@@ -150,4 +150,7 @@
       go_num = #{goNum,jdbcType=INTEGER}
     where go_id = #{goId,jdbcType=INTEGER}
   </update>
+  <select id = "selectAll" resultType="com.mr.good.pojo.Goods">
+      select *  FROM t_Goods
+  </select>
 </mapper>
