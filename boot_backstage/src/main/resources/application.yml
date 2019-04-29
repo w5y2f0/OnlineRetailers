@@ -3,10 +3,10 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/ #Á´½Ó×¢²áÖÐÐÄµÄµØÖ·
+      defaultZone: http://localhost:8761/eureka/ #ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ÄµÄµï¿½Ö·
 spring:
   application:
-    name: provider #·þÎñµÄÃû×Ö
+    name: provider #ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   redis:
     host: 127.0.0.1
     port: 6379
@@ -29,3 +29,6 @@ spring:
     level:
       com:
       mr: debug
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
