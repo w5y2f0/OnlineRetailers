@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.parameter.mapper.ParameterMapper">
+  <resultMap id="BaseResultMap" type="com.mr.parameter.pojo.Parameter">
+    <id column="par_id" jdbcType="INTEGER" property="parId" />
+    <result column="go_id" jdbcType="INTEGER" property="goId" />
+    <result column="pa_color" jdbcType="VARCHAR" property="paColor" />
+    <result column="pa_weight" jdbcType="INTEGER" property="paWeight" />
+    <result column="go_specs" jdbcType="VARCHAR" property="goSpecs" />
+    <result column="go_Material" jdbcType="VARCHAR" property="goMaterial" />
+    <result column="go_Packing" jdbcType="VARCHAR" property="goPacking" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    par_id, go_id, pa_color, pa_weight, go_specs, go_Material, go_Packing
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_parameter
+    where par_id = #{parId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_parameter
+    where par_id = #{parId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mr.parameter.pojo.Parameter">
+    insert into t_parameter (par_id, go_id, pa_color, 
+      pa_weight, go_specs, go_Material, 
+      go_Packing)
+    values (#{parId,jdbcType=INTEGER}, #{goId,jdbcType=INTEGER}, #{paColor,jdbcType=VARCHAR}, 
+      #{paWeight,jdbcType=INTEGER}, #{goSpecs,jdbcType=VARCHAR}, #{goMaterial,jdbcType=VARCHAR}, 
+      #{goPacking,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.parameter.pojo.Parameter">
+    insert into t_parameter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parId != null">
+        par_id,
+      </if>
+      <if test="goId != null">
+        go_id,
+      </if>
+      <if test="paColor != null">
+        pa_color,
+      </if>
+      <if test="paWeight != null">
+        pa_weight,
+      </if>
+      <if test="goSpecs != null">
+        go_specs,
+      </if>
+      <if test="goMaterial != null">
+        go_Material,
+      </if>
+      <if test="goPacking != null">
+        go_Packing,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parId != null">
+        #{parId,jdbcType=INTEGER},
+      </if>
+      <if test="goId != null">
+        #{goId,jdbcType=INTEGER},
+      </if>
+      <if test="paColor != null">
+        #{paColor,jdbcType=VARCHAR},
+      </if>
+      <if test="paWeight != null">
+        #{paWeight,jdbcType=INTEGER},
+      </if>
+      <if test="goSpecs != null">
+        #{goSpecs,jdbcType=VARCHAR},
+      </if>
+      <if test="goMaterial != null">
+        #{goMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="goPacking != null">
+        #{goPacking,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.parameter.pojo.Parameter">
+    update t_parameter
+    <set>
+      <if test="goId != null">
+        go_id = #{goId,jdbcType=INTEGER},
+      </if>
+      <if test="paColor != null">
+        pa_color = #{paColor,jdbcType=VARCHAR},
+      </if>
+      <if test="paWeight != null">
+        pa_weight = #{paWeight,jdbcType=INTEGER},
+      </if>
+      <if test="goSpecs != null">
+        go_specs = #{goSpecs,jdbcType=VARCHAR},
+      </if>
+      <if test="goMaterial != null">
+        go_Material = #{goMaterial,jdbcType=VARCHAR},
+      </if>
+      <if test="goPacking != null">
+        go_Packing = #{goPacking,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where par_id = #{parId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.parameter.pojo.Parameter">
+    update t_parameter
+    set go_id = #{goId,jdbcType=INTEGER},
+      pa_color = #{paColor,jdbcType=VARCHAR},
+      pa_weight = #{paWeight,jdbcType=INTEGER},
+      go_specs = #{goSpecs,jdbcType=VARCHAR},
+      go_Material = #{goMaterial,jdbcType=VARCHAR},
+      go_Packing = #{goPacking,jdbcType=VARCHAR}
+    where par_id = #{parId,jdbcType=INTEGER}
+  </update>
+</mapper>

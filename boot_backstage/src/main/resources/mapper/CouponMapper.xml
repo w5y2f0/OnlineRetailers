@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mr.coupon.mapper.CouponMapper">
+  <resultMap id="BaseResultMap" type="com.mr.coupon.pojo.Coupon">
+    <id column="co_id" jdbcType="INTEGER" property="coId" />
+    <result column="co_money" jdbcType="DOUBLE" property="coMoney" />
+    <result column="co_limit" jdbcType="DOUBLE" property="coLimit" />
+    <result column="co_valid" jdbcType="DATE" property="coValid" />
+    <result column="co_states" jdbcType="INTEGER" property="coStates" />
+    <result column="co_num" jdbcType="INTEGER" property="coNum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    co_id, co_money, co_limit, co_valid, co_states, co_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_coupon
+    where co_id = #{coId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_coupon
+    where co_id = #{coId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mr.coupon.pojo.Coupon">
+    insert into t_coupon (co_id, co_money, co_limit, 
+      co_valid, co_states, co_num
+      )
+    values (#{coId,jdbcType=INTEGER}, #{coMoney,jdbcType=DOUBLE}, #{coLimit,jdbcType=DOUBLE}, 
+      #{coValid,jdbcType=DATE}, #{coStates,jdbcType=INTEGER}, #{coNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mr.coupon.pojo.Coupon">
+    insert into t_coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="coId != null">
+        co_id,
+      </if>
+      <if test="coMoney != null">
+        co_money,
+      </if>
+      <if test="coLimit != null">
+        co_limit,
+      </if>
+      <if test="coValid != null">
+        co_valid,
+      </if>
+      <if test="coStates != null">
+        co_states,
+      </if>
+      <if test="coNum != null">
+        co_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="coId != null">
+        #{coId,jdbcType=INTEGER},
+      </if>
+      <if test="coMoney != null">
+        #{coMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="coLimit != null">
+        #{coLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="coValid != null">
+        #{coValid,jdbcType=DATE},
+      </if>
+      <if test="coStates != null">
+        #{coStates,jdbcType=INTEGER},
+      </if>
+      <if test="coNum != null">
+        #{coNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.coupon.pojo.Coupon">
+    update t_coupon
+    <set>
+      <if test="coMoney != null">
+        co_money = #{coMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="coLimit != null">
+        co_limit = #{coLimit,jdbcType=DOUBLE},
+      </if>
+      <if test="coValid != null">
+        co_valid = #{coValid,jdbcType=DATE},
+      </if>
+      <if test="coStates != null">
+        co_states = #{coStates,jdbcType=INTEGER},
+      </if>
+      <if test="coNum != null">
+        co_num = #{coNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where co_id = #{coId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mr.coupon.pojo.Coupon">
+    update t_coupon
+    set co_money = #{coMoney,jdbcType=DOUBLE},
+      co_limit = #{coLimit,jdbcType=DOUBLE},
+      co_valid = #{coValid,jdbcType=DATE},
+      co_states = #{coStates,jdbcType=INTEGER},
+      co_num = #{coNum,jdbcType=INTEGER}
+    where co_id = #{coId,jdbcType=INTEGER}
+  </update>
+</mapper>
