@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * 优惠券表
  */
-public class Coupon {
+public class Coupon  {
     private Integer coId;
 
     private Double coMoney;

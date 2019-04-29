@@ -4,7 +4,7 @@ import com.mr.coupon.pojo.Coupon;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface CouponMapper {
+public interface CouponMapper  {
     int deleteByPrimaryKey(Integer coId);
 
     int insert(Coupon record);
