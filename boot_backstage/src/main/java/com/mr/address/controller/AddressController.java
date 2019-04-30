@@ -32,8 +32,19 @@ public class AddressController {
         return gridVo;
     }
 
+    @RequestMapping("deleteAddress")
+    @ResponseBody
     public ResultVo deleteAddress(Integer aId){
         return addressService.deleteById(aId);
     }
-
+    @RequestMapping("updateAddress")
+    @ResponseBody
+    public ResultVo updateAddress(Address address){
+        return addressService.updateAddress(address);
+    }
+    @RequestMapping("selectById")
+    @ResponseBody
+    public Address selectById(Integer aId){
+        return addressService.selectById(aId);
+    }
 }
