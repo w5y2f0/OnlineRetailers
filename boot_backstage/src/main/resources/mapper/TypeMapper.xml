@@ -11,7 +11,7 @@
     select
       typr_id,type_name
     from
-      t_types
+      t_type
   </select>
 
   <!-- 根据编号查询 -->
