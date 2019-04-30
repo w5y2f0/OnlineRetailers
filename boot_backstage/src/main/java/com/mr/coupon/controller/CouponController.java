@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.GET;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 黄圣博 on 2019/4/29.
@@ -23,9 +25,14 @@ public class CouponController {
     @Autowired
     private CouponService couponService;
 @GetMapping("selectAll")
-    public List<Coupon> selectAll(Page page){
+    public  Map<String,Object> selectAll(Page page){
         List<Coupon> coupons = couponService.selectAll(page);
-        return coupons;
+    Map<String,Object> resultMap = new HashMap<String, Object>();
+    resultMap.put("code",0);
+    resultMap.put("msg","");
+    resultMap.put("count",coupons.size());
+    resultMap.put("data",coupons);
+        return resultMap;
     }
     @PostMapping("insertCoupon")
     public ResultVo insertCoupon(Coupon coupon){

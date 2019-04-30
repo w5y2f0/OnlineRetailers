@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.ws.rs.POST;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 黄圣博 on 2019/4/29.
@@ -24,10 +26,14 @@ public class ParameterController {
     @Autowired
     private ParameterService parameterService;
 @GetMapping("selectAll")
-    public List<Parameter> selectAll(Page page){
-        PageHelper.startPage(page.getPage(),page.getLimit());
+    public  Map<String,Object> selectAll(Page page){
         List<Parameter> parameter = parameterService.selectAll(page);
-        return parameter;
+    Map<String,Object> resultMap = new HashMap<String, Object>();
+    resultMap.put("code",0);
+    resultMap.put("msg","");
+    resultMap.put("count",parameter.size());
+    resultMap.put("data",parameter);
+        return resultMap;
     }
     @PostMapping("insertParameter")
     public ResultVo insertParameter(Parameter parameter){
