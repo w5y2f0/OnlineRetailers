@@ -21,7 +21,7 @@
     delete from t_address
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mr.address.pojo.Address">
+  <insert id="insert" parameterType="com.mr.address.Address">
     insert into t_address (id, u_id, address_name, 
       address_phone, address)
     values (#{id,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{addressName,jdbcType=VARCHAR}, 
@@ -90,4 +90,7 @@
       address = #{address,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+      SELECT * FROM t_address
+  </select>
 </mapper>
