@@ -1,6 +1,7 @@
 package com.mr.good.service;
 
-import com.mr.good.pojo.Goods;
+import com.mr.pojo.Goods;
+import com.mr.pojo.Goods;
 import com.mr.utils.Page;
 import com.mr.utils.ResultVo;
 

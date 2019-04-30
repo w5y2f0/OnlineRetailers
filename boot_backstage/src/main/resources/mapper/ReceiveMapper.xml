@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mr.receive.mapper.ReceiveMapper">
-  <resultMap id="BaseResultMap" type="com.mr.receive.pojo.Receive">
+  <resultMap id="BaseResultMap" type="com.mr.pojo.Receive">
     <id column="re_id" jdbcType="INTEGER" property="reId" />
     <result column="go_id" jdbcType="INTEGER" property="goId" />
     <result column="co_id" jdbcType="INTEGER" property="coId" />
@@ -22,13 +22,13 @@
     delete from t_receive
     where re_id = #{reId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mr.receive.pojo.Receive">
+  <insert id="insert" parameterType="com.mr.pojo.Receive">
     insert into t_receive (re_id, go_id, co_id, 
       re_time, re_use, re_term)
     values (#{reId,jdbcType=INTEGER}, #{goId,jdbcType=INTEGER}, #{coId,jdbcType=INTEGER}, 
       #{reTime,jdbcType=DATE}, #{reUse,jdbcType=INTEGER}, #{reTerm,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.mr.receive.pojo.Receive">
+  <insert id="insertSelective" parameterType="com.mr.pojo.Receive">
     insert into t_receive
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="reId != null">
@@ -71,7 +71,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mr.receive.pojo.Receive">
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.pojo.Receive">
     update t_receive
     <set>
       <if test="goId != null">
@@ -92,7 +92,7 @@
     </set>
     where re_id = #{reId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mr.receive.pojo.Receive">
+  <update id="updateByPrimaryKey" parameterType="com.mr.pojo.Receive">
     update t_receive
     set go_id = #{goId,jdbcType=INTEGER},
       co_id = #{coId,jdbcType=INTEGER},

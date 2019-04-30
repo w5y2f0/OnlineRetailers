@@ -2,7 +2,7 @@ package com.mr.good.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.mr.good.mapper.GoodsMapper;
-import com.mr.good.pojo.Goods;
+import com.mr.pojo.Goods;
 import com.mr.good.service.GoodService;
 import com.mr.utils.Page;
 import com.mr.utils.ResultVo;
