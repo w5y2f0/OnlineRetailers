@@ -1,4 +1,4 @@
-package com.mr.picture.pojo;
+package com.mr.pojo;
 
 /**
  *图片表

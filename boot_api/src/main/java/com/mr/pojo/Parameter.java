@@ -1,4 +1,4 @@
-package com.mr.parameter.pojo;
+package com.mr.pojo;
 
 /**
  * 商品参数表

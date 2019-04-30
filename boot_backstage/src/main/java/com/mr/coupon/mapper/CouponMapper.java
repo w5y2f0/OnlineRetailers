@@ -1,6 +1,6 @@
 package com.mr.coupon.mapper;
 
-import com.mr.coupon.pojo.Coupon;
+import com.mr.pojo.Coupon;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
