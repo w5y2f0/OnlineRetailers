@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mr.coupon.mapper.CouponMapper">
-  <resultMap id="BaseResultMap" type="com.mr.coupon.pojo.Coupon">
+  <resultMap id="BaseResultMap" type="com.mr.pojo.Coupon">
     <id column="co_id" jdbcType="INTEGER" property="coId" />
     <result column="co_money" jdbcType="DOUBLE" property="coMoney" />
     <result column="co_limit" jdbcType="DOUBLE" property="coLimit" />
@@ -22,7 +22,7 @@
     delete from t_coupon
     where co_id = #{coId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mr.coupon.pojo.Coupon">
+  <insert id="insert" parameterType="com.mr.pojo.Coupon">
     insert into t_coupon (co_id, co_money, co_limit, 
       co_valid, co_states, co_num
       )
@@ -30,7 +30,7 @@
       #{coValid,jdbcType=DATE}, #{coStates,jdbcType=INTEGER}, #{coNum,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.mr.coupon.pojo.Coupon">
+  <insert id="insertSelective" parameterType="com.mr.pojo.Coupon">
     insert into t_coupon
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="coId != null">
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mr.coupon.pojo.Coupon">
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.pojo.Coupon">
     update t_coupon
     <set>
       <if test="coMoney != null">
@@ -94,7 +94,7 @@
     </set>
     where co_id = #{coId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mr.coupon.pojo.Coupon">
+  <update id="updateByPrimaryKey" parameterType="com.mr.pojo.Coupon">
     update t_coupon
     set co_money = #{coMoney,jdbcType=DOUBLE},
       co_limit = #{coLimit,jdbcType=DOUBLE},
@@ -103,4 +103,8 @@
       co_num = #{coNum,jdbcType=INTEGER}
     where co_id = #{coId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultType="com.mr.pojo.Coupon">
+      select *  from t_coupon
+  </select>
 </mapper>

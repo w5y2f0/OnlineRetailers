@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mr.parameter.mapper.ParameterMapper">
-  <resultMap id="BaseResultMap" type="com.mr.parameter.pojo.Parameter">
+  <resultMap id="BaseResultMap" type="com.mr.pojo.Parameter">
     <id column="par_id" jdbcType="INTEGER" property="parId" />
     <result column="go_id" jdbcType="INTEGER" property="goId" />
     <result column="pa_color" jdbcType="VARCHAR" property="paColor" />
@@ -23,7 +23,7 @@
     delete from t_parameter
     where par_id = #{parId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mr.parameter.pojo.Parameter">
+  <insert id="insert" parameterType="com.mr.pojo.Parameter">
     insert into t_parameter (par_id, go_id, pa_color, 
       pa_weight, go_specs, go_Material, 
       go_Packing)
@@ -31,7 +31,7 @@
       #{paWeight,jdbcType=INTEGER}, #{goSpecs,jdbcType=VARCHAR}, #{goMaterial,jdbcType=VARCHAR}, 
       #{goPacking,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.mr.parameter.pojo.Parameter">
+  <insert id="insertSelective" parameterType="com.mr.pojo.Parameter">
     insert into t_parameter
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="parId != null">
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mr.parameter.pojo.Parameter">
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.pojo.Parameter">
     update t_parameter
     <set>
       <if test="goId != null">
@@ -104,7 +104,7 @@
     </set>
     where par_id = #{parId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mr.parameter.pojo.Parameter">
+  <update id="updateByPrimaryKey" parameterType="com.mr.pojo.Parameter">
     update t_parameter
     set go_id = #{goId,jdbcType=INTEGER},
       pa_color = #{paColor,jdbcType=VARCHAR},
@@ -114,4 +114,7 @@
       go_Packing = #{goPacking,jdbcType=VARCHAR}
     where par_id = #{parId,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultType="com.mr.pojo.Parameter">
+    select * from t_parameter
+  </select>
 </mapper>
