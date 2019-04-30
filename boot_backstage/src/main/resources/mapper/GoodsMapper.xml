@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mr.good.mapper.GoodsMapper">
-  <resultMap id="BaseResultMap" type="com.mr.good.pojo.Goods">
+  <resultMap id="BaseResultMap" type="com.mr.pojo.Goods">
     <id column="go_id" jdbcType="INTEGER" property="goId" />
     <result column="go_name" jdbcType="VARCHAR" property="goName" />
     <result column="go_synopsis" jdbcType="VARCHAR" property="goSynopsis" />
@@ -27,7 +27,7 @@
     delete from t_goods
     where go_id = #{goId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mr.good.pojo.Goods">
+  <insert id="insert" parameterType="com.mr.pojo.Goods">
     insert into t_goods (go_id, go_name, go_synopsis, 
       go_type, go_states, go_DateTimeS, 
       go_Sales, go_old, go_new, 
@@ -37,7 +37,7 @@
       #{goSales,jdbcType=INTEGER}, #{goOld,jdbcType=DOUBLE}, #{goNew,jdbcType=DOUBLE}, 
       #{goNum,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.mr.good.pojo.Goods">
+  <insert id="insertSelective" parameterType="com.mr.pojo.Goods">
     insert into t_goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="goId != null">
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mr.good.pojo.Goods">
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.pojo.Goods">
     update t_goods
     <set>
       <if test="goName != null">
@@ -137,7 +137,7 @@
     </set>
     where go_id = #{goId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mr.good.pojo.Goods">
+  <update id="updateByPrimaryKey" parameterType="com.mr.pojo.Goods">
     update t_goods
     set go_name = #{goName,jdbcType=VARCHAR},
       go_synopsis = #{goSynopsis,jdbcType=VARCHAR},
@@ -150,7 +150,7 @@
       go_num = #{goNum,jdbcType=INTEGER}
     where go_id = #{goId,jdbcType=INTEGER}
   </update>
-  <select id = "selectAll" resultType="com.mr.good.pojo.Goods">
+  <select id = "selectAll" resultType="com.mr.pojo.Goods">
       select *  FROM t_Goods
   </select>
 </mapper>

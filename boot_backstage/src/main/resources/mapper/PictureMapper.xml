@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mr.picture.mapper.PictureMapper">
-  <resultMap id="BaseResultMap" type="com.mr.picture.pojo.Picture">
+  <resultMap id="BaseResultMap" type="com.mr.pojo.Picture">
     <id column="pi_id" jdbcType="INTEGER" property="piId" />
     <result column="go_id" jdbcType="INTEGER" property="goId" />
     <result column="pi_url" jdbcType="VARCHAR" property="piUrl" />
@@ -20,13 +20,13 @@
     delete from t_picture
     where pi_id = #{piId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mr.picture.pojo.Picture">
+  <insert id="insert" parameterType="com.mr.pojo.Picture">
     insert into t_picture (pi_id, go_id, pi_url, 
       pi_order)
     values (#{piId,jdbcType=INTEGER}, #{goId,jdbcType=INTEGER}, #{piUrl,jdbcType=VARCHAR}, 
       #{piOrder,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.mr.picture.pojo.Picture">
+  <insert id="insertSelective" parameterType="com.mr.pojo.Picture">
     insert into t_picture
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="piId != null">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mr.picture.pojo.Picture">
+  <update id="updateByPrimaryKeySelective" parameterType="com.mr.pojo.Picture">
     update t_picture
     <set>
       <if test="goId != null">
@@ -72,11 +72,14 @@
     </set>
     where pi_id = #{piId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mr.picture.pojo.Picture">
+  <update id="updateByPrimaryKey" parameterType="com.mr.pojo.Picture">
     update t_picture
     set go_id = #{goId,jdbcType=INTEGER},
       pi_url = #{piUrl,jdbcType=VARCHAR},
       pi_order = #{piOrder,jdbcType=INTEGER}
     where pi_id = #{piId,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultType="com.mr.pojo.Picture">
+      select * from t_picture
+  </select>
 </mapper>
