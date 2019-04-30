@@ -1,6 +1,6 @@
 package com.mr.parameter.mapper;
 
-import com.mr.parameter.pojo.Parameter;
+import com.mr.pojo.Parameter;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

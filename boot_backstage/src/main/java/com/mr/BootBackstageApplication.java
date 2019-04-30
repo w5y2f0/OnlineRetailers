@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.mr.good.mapper.GoodsMapper")
+@MapperScan("com.mr.good.mapper.*")
 public class BootBackstageApplication {
 
 	public static void main(String[] args) {

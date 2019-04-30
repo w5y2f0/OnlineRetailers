@@ -1,4 +1,4 @@
-package com.mr.good.pojo;
+package com.mr.pojo;
 
 import java.util.Date;
 

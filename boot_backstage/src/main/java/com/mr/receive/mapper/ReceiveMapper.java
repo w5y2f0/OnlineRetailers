@@ -1,6 +1,6 @@
 package com.mr.receive.mapper;
 
-import com.mr.receive.pojo.Receive;
+import com.mr.pojo.Receive;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

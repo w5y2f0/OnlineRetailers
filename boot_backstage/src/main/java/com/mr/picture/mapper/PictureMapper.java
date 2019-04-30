@@ -1,6 +1,6 @@
 package com.mr.picture.mapper;
 
-import com.mr.picture.pojo.Picture;
+import com.mr.pojo.Picture;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
