@@ -1,12 +1,14 @@
 package com.mr.type.mapper;
 
 import com.mr.pojo.Type;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * Created by ASUS on 2019/4/30.
  */
+@Mapper
 public interface TypeMapper {
     //查询
     List<Type> selectAll();
