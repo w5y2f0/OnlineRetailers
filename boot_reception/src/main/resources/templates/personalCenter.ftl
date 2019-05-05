@@ -13,7 +13,6 @@
 		<link href="css/systyle.css" rel="stylesheet" type="text/css">
 
 	</head>
-
 	<body>
 		<!--头 -->
 		<header>
