@@ -43,7 +43,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.mr</groupId>
-			<artifactId>api</artifactId>
+			<artifactId>boot_api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
