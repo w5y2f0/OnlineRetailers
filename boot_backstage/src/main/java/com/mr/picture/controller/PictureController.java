@@ -25,8 +25,8 @@ public class PictureController {
     private PictureService pictureService;
     @GetMapping("selectAll")
     @ResponseBody
-    public  Map<String,Object> selectAll(Page page){
-        List<Picture> list= pictureService.selectAll(page);
+    public  Map<String,Object> selectAll(){
+        List<Picture> list= pictureService.selectAll();
         Map<String,Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code",0);
         resultMap.put("msg","");

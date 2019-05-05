@@ -20,8 +20,7 @@ public class PictureServiceImpl implements PictureService {
     @Autowired
     private PictureMapper pictureMapper;
 
-    public List<Picture> selectAll(Page page){
-        PageHelper.startPage(page.getPage(),page.getLimit());
+    public List<Picture> selectAll(){
         List<Picture> list= pictureMapper.selectAll();
         return list;
     }
