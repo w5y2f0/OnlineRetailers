@@ -27,16 +27,16 @@
             <div class="topMessage">
                 <div class="menu-hd">
                     <a href="#" target="_top" class="h">亲，请登录</a>
-                    <a href="#" target="_top">免费注册</a>
+                    <a href="register" target="_top">免费注册</a>
                 </div>
             </div>
         </ul>
         <ul class="message-r">
             <div class="topMessage home">
-                <div class="menu-hd"><a href="#" target="_top" class="h">商城首页</a></div>
+                <div class="menu-hd"><a href="" target="_top" class="h">商城首页</a></div>
             </div>
             <div class="topMessage my-shangcheng">
-                <div class="menu-hd MyShangcheng"><a href="#" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
+                <div class="menu-hd MyShangcheng"><a href="personalCenter" target="_top"><i class="am-icon-user am-icon-fw"></i>个人中心</a></div>
             </div>
             <div class="topMessage mini-cart">
                 <div class="menu-hd"><a id="mc-menu-hd" href="shopcart" target="_top"><i class="am-icon-shopping-cart  am-icon-fw"></i><span>购物车</span><strong id="J_MiniCartNum" class="h">0</strong></a></div>
@@ -69,7 +69,6 @@
     <!--轮播 -->
     <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
         <ul class="am-slides">
-            <li class="banner1"><a href="introduction.html"><img src="images/ad1.jpg" /></a></li>
             <li class="banner2"><a><img src="images/ad2.jpg" /></a></li>
             <li class="banner3"><a><img src="images/ad3.jpg" /></a></li>
             <li class="banner4"><a><img src="images/ad4.jpg" /></a></li>
@@ -114,7 +113,7 @@
                                                 <div class="sort-side">
                                                     <dl class="dl-sort">
                                                         <dt><span title="蛋糕">蛋糕</span></dt>
-                                                        <dd><a title="蒸蛋糕" href="#"><span>蒸蛋糕</span></a></dd>
+                                                        <dd><a title="蒸蛋糕" href="toSearch"><span>蒸蛋糕</span></a></dd>
                                                         <dd><a title="脱水蛋糕" href="#"><span>脱水蛋糕</span></a></dd>
                                                         <dd><a title="瑞士卷" href="#"><span>瑞士卷</span></a></dd>
                                                         <dd><a title="软面包" href="#"><span>软面包</span></a></dd>
@@ -126,7 +125,7 @@
                                                     </dl>
                                                     <dl class="dl-sort">
                                                         <dt><span title="蛋糕">点心</span></dt>
-                                                        <dd><a title="蒸蛋糕" href="#"><span>蒸蛋糕</span></a></dd>
+                                                        <dd><a title="蒸蛋糕" href="toSearch"><span>蒸蛋糕</span></a></dd>
                                                         <dd><a title="脱水蛋糕" href="#"><span>脱水蛋糕</span></a></dd>
                                                         <dd><a title="瑞士卷" href="#"><span>瑞士卷</span></a></dd>
                                                         <dd><a title="软面包" href="#"><span>软面包</span></a></dd>
@@ -140,7 +139,7 @@
                                                 </div>
                                                 <div class="brand-side">
                                                     <dl class="dl-sort"><dt><span>实力商家</span></dt>
-                                                        <dd><a rel="nofollow" title="呵官方旗舰店" target="_blank" href="#" rel="nofollow"><span  class="red" >呵官方旗舰店</span></a></dd>
+                                                        <dd><a rel="nofollow" title="呵官方旗舰店" target="_blank" href="toSearch" rel="nofollow"><span  class="red" >呵官方旗舰店</span></a></dd>
                                                         <dd><a rel="nofollow" title="格瑞旗舰店" target="_blank" href="#" rel="nofollow"><span >格瑞旗舰店</span></a></dd>
                                                         <dd><a rel="nofollow" title="飞彦大厂直供" target="_blank" href="#" rel="nofollow"><span  class="red" >飞彦大厂直供</span></a></dd>
                                                         <dd><a rel="nofollow" title="红e·艾菲妮" target="_blank" href="#" rel="nofollow"><span >红e·艾菲妮</span></a></dd>
@@ -165,7 +164,7 @@
                                                 <div class="sort-side">
                                                     <dl class="dl-sort">
                                                         <dt><span title="饼干">饼干</span></dt>
-                                                        <dd><a title="蒸蛋糕" href="#"><span>蒸蛋糕</span></a></dd>
+                                                        <dd><a title="蒸蛋糕" href="toSearch"><span>蒸蛋糕</span></a></dd>
                                                         <dd><a title="脱水蛋糕" href="#"><span>脱水蛋糕</span></a></dd>
                                                         <dd><a title="瑞士卷" href="#"><span>瑞士卷</span></a></dd>
                                                         <dd><a title="软面包" href="#"><span>软面包</span></a></dd>
@@ -173,7 +172,7 @@
                                                     </dl>
                                                     <dl class="dl-sort">
                                                         <dt><span title="薯片">薯片</span></dt>
-                                                        <dd><a title="蒸蛋糕" href="#"><span>蒸蛋糕</span></a></dd>
+                                                        <dd><a title="蒸蛋糕" href="toSearch"><span>蒸蛋糕</span></a></dd>
                                                         <dd><a title="脱水蛋糕" href="#"><span>脱水蛋糕</span></a></dd>
                                                         <dd><a title="瑞士卷" href="#"><span>瑞士卷</span></a></dd>
                                                         <dd><a title="软面包" href="#"><span>软面包</span></a></dd>
@@ -185,7 +184,7 @@
                                                     </dl>
                                                     <dl class="dl-sort">
                                                         <dt><span title="蛋糕">虾条</span></dt>
-                                                        <dd><a title="蒸蛋糕" href="#"><span>蒸蛋糕</span></a></dd>
+                                                        <dd><a title="蒸蛋糕" href="toSearch"><span>蒸蛋糕</span></a></dd>
                                                         <dd><a title="脱水蛋糕" href="#"><span>脱水蛋糕</span></a></dd>
                                                         <dd><a title="瑞士卷" href="#"><span>瑞士卷</span></a></dd>
                                                         <dd><a title="软面包" href="#"><span>软面包</span></a></dd>
@@ -198,7 +197,7 @@
                                                 </div>
                                                 <div class="brand-side">
                                                     <dl class="dl-sort"><dt><span>实力商家</span></dt>
-                                                        <dd><a rel="nofollow" title="YYKCLOT" target="_blank" href="#" rel="nofollow"><span  class ="red" >YYKCLOT</span></a></dd>
+                                                        <dd><a rel="nofollow" title="YYKCLOT" target="_blank" href="toSearch" rel="nofollow"><span  class ="red" >YYKCLOT</span></a></dd>
                                                         <dd><a rel="nofollow" title="池氏品牌男装" target="_blank" href="#" rel="nofollow"><span  class ="red" >池氏品牌男装</span></a></dd>
                                                         <dd><a rel="nofollow" title="男装日志" target="_blank" href="#" rel="nofollow"><span >男装日志</span></a></dd>
                                                         <dd><a rel="nofollow" title="索比诺官方旗舰店" target="_blank" href="#" rel="nofollow"><span >索比诺官方旗舰店</span></a></dd>
@@ -707,8 +706,8 @@
                             </em>
                         </div>
                         <div class="member-logout">
-                            <a class="am-btn-warning btn" href="login.html">登录</a>
-                            <a class="am-btn-warning btn" href="register.html">注册</a>
+                            <a class="am-btn-warning btn" href="login">登录</a>
+                            <a class="am-btn-warning btn" href="register">注册</a>
                         </div>
                         <div class="member-login">
                             <a href="#"><strong>0</strong>待收货</a>
@@ -762,7 +761,7 @@
                 <h4>开年福利篇</h4>
             </div>
             <div class="recommendationMain one">
-                <a href="introduction.html"><img src="images/tj.png "></img></a>
+                <a href="introduction.html"><img src="images/tj.png"></img></a>
             </div>
         </div>
         <div class="am-u-sm-4 am-u-lg-3 ">
@@ -2175,7 +2174,7 @@
 <div class="navCir">
     <li class="active"><a href="home.html"><i class="am-icon-home "></i>首页</a></li>
     <li><a href="sort.html"><i class="am-icon-list"></i>分类</a></li>
-    <li><a href="shopcart.html"><i class="am-icon-shopping-basket"></i>购物车</a></li>
+    <li><a href="shopcart"><i class="am-icon-shopping-basket"></i>购物车</a></li>
     <li><a href="person/index.html"><i class="am-icon-user"></i>我的</a></li>
 </div>
 
@@ -2205,7 +2204,7 @@
 
             </div>
             <div id="shopCart " class="item ">
-                <a href="# ">
+                <a href="shopcart">
                     <span class="message "></span>
                 </a>
                 <p>
@@ -2224,7 +2223,7 @@
             </div>
 
             <div id="foot " class="item ">
-                <a href="# ">
+                <a href="toFoot">
                     <span class="zuji "></span>
                 </a>
                 <div class="mp_tooltip ">
@@ -2308,7 +2307,7 @@
                 <div class="text ">红包</div>
             </a>
             <a href="# " target="_blank " class="pl money ">
-                <div class="num ">￥0</div>
+                <div class="num ">￥12000</div>
                 <div class="text ">余额</div>
             </a>
         </div>
