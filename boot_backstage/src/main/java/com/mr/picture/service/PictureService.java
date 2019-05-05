@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface PictureService {
 
-    public List<Picture> selectAll(Page page);
+    public List<Picture> selectAll();
     public ResultVo insertPicture(Picture parameter);
     public ResultVo deletePicture(String id);
     public Picture selectById(String id);
