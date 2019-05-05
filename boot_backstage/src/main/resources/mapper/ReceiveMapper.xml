@@ -101,4 +101,7 @@
       re_term = #{reTerm,jdbcType=INTEGER}
     where re_id = #{reId,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultType="com.mr.pojo.Receive">
+    select * from t_receive
+  </select>
 </mapper>
