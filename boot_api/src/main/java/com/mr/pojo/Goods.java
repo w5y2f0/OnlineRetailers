@@ -9,6 +9,8 @@ public class Goods {
 
     private String goSynopsis;
 
+    private String goDetailed;
+
     private Integer goType;
 
     private Integer goStates;
@@ -45,6 +47,14 @@ public class Goods {
 
     public void setGoSynopsis(String goSynopsis) {
         this.goSynopsis = goSynopsis == null ? null : goSynopsis.trim();
+    }
+
+    public String getGoDetailed() {
+        return goDetailed;
+    }
+
+    public void setGoDetailed(String goDetailed) {
+        this.goDetailed = goDetailed == null ? null : goDetailed.trim();
     }
 
     public Integer getGoType() {
