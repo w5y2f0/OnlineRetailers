@@ -12,5 +12,5 @@ public interface FootService {
 
     void insertFoot(Goods goods);
 
-    List<Foot> selectAllFoot();
+    List<Goods> selectAllFoot();
 }
