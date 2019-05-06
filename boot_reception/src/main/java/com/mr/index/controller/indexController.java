@@ -11,8 +11,45 @@ import org.springframework.web.servlet.ModelAndView;
 public class indexController {
 
     @RequestMapping("shopcart")
-    public ModelAndView toShopCart(){
-        ModelAndView view  =new ModelAndView("shopcart");
+    public ModelAndView toShopCart() {
+        ModelAndView view = new ModelAndView("shopcart");
         return view;
     }
+
+    @RequestMapping("personalCenter")
+    public ModelAndView toPersonalCenter() {
+        ModelAndView view = new ModelAndView("personalCenter");
+        return view;
+    }
+
+    @RequestMapping("register")
+    public ModelAndView toRegister() {
+        ModelAndView view = new ModelAndView("register");
+        return view;
+    }
+
+    @RequestMapping("toIndex")
+    public ModelAndView toIndex() {
+        ModelAndView view = new ModelAndView("index");
+        return view;
+    }
+
+    @RequestMapping("toSearch")
+    public ModelAndView toSearch() {
+        ModelAndView view = new ModelAndView("search");
+        return view;
+    }
+
+    @RequestMapping("toPay")
+    public ModelAndView topay() {
+        ModelAndView view = new ModelAndView("pay");
+        return view;
+    }
+
+    @RequestMapping("toFoot")
+    public ModelAndView toFoot() {
+        ModelAndView view = new ModelAndView("foot");
+        return view;
+    }
+
 }
