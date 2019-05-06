@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<#assign path="${springMacroRequestContext.getContextPath()}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/layui.css" media="all">
-    <script src="layui.js"></script>
-    <script src="jquery-1.11.3.js"></script>
+    <link rel="stylesheet" type="text/css" href="${path}/css/layui.css" media="all">
+    <script src="${path}/layui.js"></script>
+    <script src="${path}/jquery-1.11.3.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${path}/ueditor/ueditor.config.js"></script> <!--ueditor的配置文件-->
+    <script type="text/javascript" charset="utf-8" src="${path}/ueditor/ueditor.all.min.js"></script> <!--ueditor核心文件-->
+    <script type="text/javascript" charset="utf-8" src="${path}/ueditor/lang/zh-cn/zh-cn.js"></script> <!--ueditor语言文件-->
     <title>1432</title>
 </head>
 <body class="layui-layout-body">
@@ -39,6 +43,7 @@
                     <a class="" href="javascript:;">商品管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:list();">商品列表</a></dd>
+                        <dd><a href="javascript:add();">商品上架</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -57,7 +62,14 @@
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <table id="table" lay-filter="table"></table>
+        <div id="ert">
+            <div id = "qqq">
+                <table id="table" lay-filter="table"></table>
+            </div>
+            <div id = "www">
+                <iframe src="" frameborder="0" id="demoAdmin" style="width: 100%; height: 1200px;"></iframe>
+            </div>
+        </div>
     </div>
 
     <div class="layui-footer">
@@ -71,12 +83,24 @@
         var element = layui.element;
 
     });
+    function add() {
+        document.getElementById("qqq").style.display="none";//隐藏
+        document.getElementById("www").style.display="";//显示
+        $("#demoAdmin").attr("src","goods/addGoods");
+    }
     function list() {
+        document.getElementById("www").style.display="none";//隐藏
+        document.getElementById("qqq").style.display="";//显示
+//        $('#qqq').html("<table id="table" lay-filter="table"></table>");
+//        $('#ert').empty();//jQuery方法一
+//        $('#ert').html('');//jQuery方法二
+        $("#demoAdmin").attr("src","");
         layui.use('table', function(){
             var table = layui.table;
             //第一个实例
             table.render({
-                elem: '#table'
+                id:'table'
+                ,elem: '#table'
                 ,url: '/goods/selectAll' //数据接口
                 ,page: true //开启分页
                 ,cols: [[ //表头
@@ -134,11 +158,10 @@
                                 this.layerIndex = layer.load(0, { shade: [0.5, '#67231'] });
                             },
                             success:function (msg) {
-                                layer.msg(msg.msg, {
-                                    icon: 6,//成功的表情
-                                    time: 2000 //1秒关闭（如果不配置，默认是3秒）
-                                }, function(){
-                                    location.reload();
+                                table.reload('table', {
+                                    page: {
+                                        curr: 1
+                                    }
                                 });
                             },
                             error:function () {
@@ -157,7 +180,7 @@
 </script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-green" lay-event="detail">编辑</a>
-    <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-danger" lay-event="del" id = "del">删除</a>
 </script>
 </body>
 </html>
