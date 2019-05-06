@@ -6,6 +6,7 @@ import com.mr.pojo.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -19,10 +20,13 @@ public class FootController {
     @Autowired
     private FootService footService;
 
+    @RequestMapping("addFoot")
     public void addFoot(Goods goods) {
         footService.insertFoot(goods);
     }
 
+    @RequestMapping("selectAllFoot")
+    @ResponseBody
     public List<Foot> selectAllFoot() {
         return footService.selectAllFoot();
     }
