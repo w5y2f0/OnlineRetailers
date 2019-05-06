@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: consumer-ribbon
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     serviceUrl:

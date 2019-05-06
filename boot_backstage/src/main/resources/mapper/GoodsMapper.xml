@@ -5,6 +5,7 @@
     <id column="go_id" jdbcType="INTEGER" property="goId" />
     <result column="go_name" jdbcType="VARCHAR" property="goName" />
     <result column="go_synopsis" jdbcType="VARCHAR" property="goSynopsis" />
+    <result column="go_detailed" jdbcType="VARCHAR" property="goDetailed" />
     <result column="go_type" jdbcType="INTEGER" property="goType" />
     <result column="go_states" jdbcType="INTEGER" property="goStates" />
     <result column="go_DateTimeS" jdbcType="TIMESTAMP" property="goDatetimes" />
@@ -14,8 +15,8 @@
     <result column="go_num" jdbcType="INTEGER" property="goNum" />
   </resultMap>
   <sql id="Base_Column_List">
-    go_id, go_name, go_synopsis, go_type, go_states, go_DateTimeS, go_Sales, go_old, 
-    go_new, go_num
+    go_id, go_name, go_synopsis, go_detailed, go_type, go_states, go_DateTimeS, go_Sales, 
+    go_old, go_new, go_num
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -29,13 +30,13 @@
   </delete>
   <insert id="insert" parameterType="com.mr.pojo.Goods">
     insert into t_goods (go_id, go_name, go_synopsis, 
-      go_type, go_states, go_DateTimeS, 
-      go_Sales, go_old, go_new, 
-      go_num)
+      go_detailed, go_type, go_states, 
+      go_DateTimeS, go_Sales, go_old, 
+      go_new, go_num)
     values (#{goId,jdbcType=INTEGER}, #{goName,jdbcType=VARCHAR}, #{goSynopsis,jdbcType=VARCHAR}, 
-      #{goType,jdbcType=INTEGER}, #{goStates,jdbcType=INTEGER}, #{goDatetimes,jdbcType=TIMESTAMP}, 
-      #{goSales,jdbcType=INTEGER}, #{goOld,jdbcType=DOUBLE}, #{goNew,jdbcType=DOUBLE}, 
-      #{goNum,jdbcType=INTEGER})
+      #{goDetailed,jdbcType=VARCHAR}, #{goType,jdbcType=INTEGER}, #{goStates,jdbcType=INTEGER}, 
+      #{goDatetimes,jdbcType=TIMESTAMP}, #{goSales,jdbcType=INTEGER}, #{goOld,jdbcType=DOUBLE}, 
+      #{goNew,jdbcType=DOUBLE}, #{goNum,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.mr.pojo.Goods">
     insert into t_goods
@@ -48,6 +49,9 @@
       </if>
       <if test="goSynopsis != null">
         go_synopsis,
+      </if>
+      <if test="goDetailed != null">
+        go_detailed,
       </if>
       <if test="goType != null">
         go_type,
@@ -81,6 +85,9 @@
       <if test="goSynopsis != null">
         #{goSynopsis,jdbcType=VARCHAR},
       </if>
+      <if test="goDetailed != null">
+        #{goDetailed,jdbcType=VARCHAR},
+      </if>
       <if test="goType != null">
         #{goType,jdbcType=INTEGER},
       </if>
@@ -113,6 +120,9 @@
       <if test="goSynopsis != null">
         go_synopsis = #{goSynopsis,jdbcType=VARCHAR},
       </if>
+      <if test="goDetailed != null">
+        go_detailed = #{goDetailed,jdbcType=VARCHAR},
+      </if>
       <if test="goType != null">
         go_type = #{goType,jdbcType=INTEGER},
       </if>
@@ -141,6 +151,7 @@
     update t_goods
     set go_name = #{goName,jdbcType=VARCHAR},
       go_synopsis = #{goSynopsis,jdbcType=VARCHAR},
+      go_detailed = #{goDetailed,jdbcType=VARCHAR},
       go_type = #{goType,jdbcType=INTEGER},
       go_states = #{goStates,jdbcType=INTEGER},
       go_DateTimeS = #{goDatetimes,jdbcType=TIMESTAMP},
@@ -150,7 +161,7 @@
       go_num = #{goNum,jdbcType=INTEGER}
     where go_id = #{goId,jdbcType=INTEGER}
   </update>
-  <select id = "selectAll" resultType="com.mr.pojo.Goods">
-      select *  FROM t_Goods
+  <select id="selectAll" resultType="com.mr.pojo.Goods">
+    select *  FROM t_Goods
   </select>
 </mapper>
