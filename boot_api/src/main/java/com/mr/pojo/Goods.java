@@ -25,6 +25,23 @@ public class Goods {
 
     private Integer goNum;
 
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "goId=" + goId +
+                ", goName='" + goName + '\'' +
+                ", goSynopsis='" + goSynopsis + '\'' +
+                ", goDetailed='" + goDetailed + '\'' +
+                ", goType=" + goType +
+                ", goStates=" + goStates +
+                ", goDatetimes=" + goDatetimes +
+                ", goSales=" + goSales +
+                ", goOld=" + goOld +
+                ", goNew=" + goNew +
+                ", goNum=" + goNum +
+                '}';
+    }
+
     public Integer getGoId() {
         return goId;
     }
