@@ -1,7 +1,10 @@
 package com.mr.index.controller;
 
+import com.mr.index.service.IndexService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -9,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class indexController {
+
+    @Autowired
+    private IndexService indexService;
 
     @RequestMapping("shopcart")
     public ModelAndView toShopCart() {
@@ -52,4 +58,9 @@ public class indexController {
         return view;
     }
 
+    @RequestMapping("selectAllFoot")
+    @ResponseBody
+    public void selectAllFoot(){
+        System.err.println(indexService.selectAllFoot());
+    }
 }
