@@ -111,7 +111,7 @@ public class GoodController {
     }
     @GetMapping("selectByIdS")
     @ResponseBody
-    public ModelAndView selectByIdS( String id) {
+    public ModelAndView selectByIdS(String id) {
         Goods goods = goodService.selectById(id);
         Parameter parameter = parameterService.selectByIdS(id);
         List<Picture> picture = pictureService.selectByIdS(id);
@@ -126,5 +126,41 @@ public class GoodController {
         mav.addObject("qwer",picture);
         mav.setViewName("updateGoods");
         return mav;
+    }
+    @GetMapping("selectByType")
+    @ResponseBody
+    public List<GoodsVo> selectByType(String Type){
+        List<Goods> goods = goodService.selectByType(Type);
+        List<GoodsVo> list = new ArrayList<>();
+        for (int i = 0; i <goods.size() ; i++) {
+            Parameter parameter = parameterService.selectByIdS(goods.get(i).getGoId().toString());
+            List<Picture> picture = pictureService.selectByIdS(goods.get(i).getGoId().toString());
+            String as = "";
+            for (int j = 0; j <picture.size();j++) {
+                Integer piId = picture.get(j).getPiId();
+                as+=piId.toString()+",";
+            }
+            GoodsVo gv = new GoodsVo(goods.get(i).getGoId(), goods.get(i).getGoName(), goods.get(i).getGoSynopsis(), goods.get(i).getGoDetailed(), goods.get(i).getGoType(), goods.get(i).getGoStates(), goods.get(i).getGoDatetimes(), goods.get(i).getGoSales(), goods.get(i).getGoOld(), goods.get(i).getGoNew(), goods.get(i).getGoNum(), parameter.getParId(), parameter.getPaColor(), parameter.getPaWeight(), parameter.getGoSpecs(), parameter.getGoMaterial(), parameter.getGoPacking(),as);
+            list.add(gv);
+        }
+        return list;
+    }
+    @GetMapping("selectByState")
+    @ResponseBody
+    public List<GoodsVo> selectByState(String State){
+        List<Goods> goods = goodService.selectByState(State);
+        List<GoodsVo> list = new ArrayList<>();
+        for (int i = 0; i <goods.size() ; i++) {
+            Parameter parameter = parameterService.selectByIdS(goods.get(i).getGoId().toString());
+            List<Picture> picture = pictureService.selectByIdS(goods.get(i).getGoId().toString());
+            String as = "";
+            for (int j = 0; j <picture.size();j++) {
+                Integer piId = picture.get(j).getPiId();
+                as+=piId.toString()+",";
+            }
+            GoodsVo gv = new GoodsVo(goods.get(i).getGoId(), goods.get(i).getGoName(), goods.get(i).getGoSynopsis(), goods.get(i).getGoDetailed(), goods.get(i).getGoType(), goods.get(i).getGoStates(), goods.get(i).getGoDatetimes(), goods.get(i).getGoSales(), goods.get(i).getGoOld(), goods.get(i).getGoNew(), goods.get(i).getGoNum(), parameter.getParId(), parameter.getPaColor(), parameter.getPaWeight(), parameter.getGoSpecs(), parameter.getGoMaterial(), parameter.getGoPacking(),as);
+            list.add(gv);
+        }
+        return list;
     }
 }

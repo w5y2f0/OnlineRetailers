@@ -52,4 +52,14 @@ public class GoodServiceImpl implements GoodService {
         Goods goods = goodsMapper.selectByPrimaryKey(Integer.parseInt(goodid));
         return goods;
     }
+
+    @Override
+    public List<Goods> selectByType(String type) {
+        return goodsMapper.selectByType(Integer.parseInt(type));
+    }
+
+    @Override
+    public List<Goods> selectByState(String state) {
+        return goodsMapper.selectByState(Integer.parseInt(state));
+    }
 }

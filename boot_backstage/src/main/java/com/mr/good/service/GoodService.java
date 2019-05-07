@@ -16,4 +16,8 @@ public interface GoodService {
     public ResultVo deleteGood(String goodid);
     public ResultVo updateGood(Goods goods);
     public Goods selectById(String goodid);
+
+    List<Goods> selectByType(String type);
+
+    List<Goods> selectByState(String state);
 }
