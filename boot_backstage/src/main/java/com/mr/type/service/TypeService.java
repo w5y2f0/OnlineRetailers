@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface TypeService {
     //查询所有
-    List<Type> selectAll(Page page);
+    PageInfo<Type> selectAll(Page page);
 
     //新增
     ResultVo insertType(Type type);
@@ -25,4 +25,6 @@ public interface TypeService {
 
     //根据编号查询
     Type selectTypeById(Integer typeId);
+
+
 }

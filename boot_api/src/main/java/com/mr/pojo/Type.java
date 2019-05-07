@@ -36,4 +36,11 @@ public class Type {
         this.typeName = typeName;
     }
 
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
 }
