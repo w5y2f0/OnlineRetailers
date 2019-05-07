@@ -8,6 +8,7 @@ import com.mr.utils.Page;
 import com.mr.utils.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -42,13 +43,13 @@ public class AddressController {
 
     @RequestMapping("addAddress")
     @ResponseBody
-    public void addAddress(Address address) {
+    public void addAddress(@RequestBody Address address) {
         addressService.addAddress(address);
     }
 
     @RequestMapping("deleteAddress")
     @ResponseBody
-    public ResultVo deleteAddress(Integer aId) {
+    public ResultVo deleteAddress(@RequestBody Integer aId) {
         return addressService.deleteById(aId);
     }
 
