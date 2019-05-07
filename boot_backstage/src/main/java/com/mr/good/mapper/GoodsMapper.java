@@ -1,9 +1,10 @@
 package com.mr.good.mapper;
 
 import com.mr.pojo.Goods;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-
+@Mapper
 public interface GoodsMapper {
     int deleteByPrimaryKey(Integer goId);
 
@@ -18,4 +19,9 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
 
     List<Goods> selectAll();
+
+    List<Goods> selectByType(int i);
+
+    List<Goods> selectByState(int i);
+
 }
