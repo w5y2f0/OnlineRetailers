@@ -24,7 +24,7 @@ public class FootServiceImpl implements FootService {
     }
 
     @Override
-    public List<Foot> selectAllFoot() {
-        return mongoTemplate.findAll(Foot.class);
+    public List<Goods> selectAllFoot() {
+        return mongoTemplate.findAll(Goods.class);
     }
 }
