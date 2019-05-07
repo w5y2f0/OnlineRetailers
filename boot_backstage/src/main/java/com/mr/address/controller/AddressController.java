@@ -40,6 +40,12 @@ public class AddressController {
         return addressService.selectAll();
     }
 
+    @RequestMapping("addAddress")
+    @ResponseBody
+    public void addAddress(Address address) {
+        addressService.addAddress(address);
+    }
+
     @RequestMapping("deleteAddress")
     @ResponseBody
     public ResultVo deleteAddress(Integer aId) {
