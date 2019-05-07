@@ -169,7 +169,8 @@
 
                                 <div class="am-form-group">
                                     <div class="am-u-sm-9 am-u-sm-push-3">
-                                        <a class="am-btn am-btn-danger">保存</a>
+                                        <#--<a >保存</a>-->
+                                        <input class="am-btn am-btn-danger" type="submit" value="保存"/>
                                         <a href="javascript: void(0)" class="am-close am-btn am-btn-danger"
                                            data-am-modal-close>取消</a>
                                     </div>
