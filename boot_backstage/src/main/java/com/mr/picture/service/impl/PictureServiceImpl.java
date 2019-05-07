@@ -45,11 +45,17 @@ public class PictureServiceImpl implements PictureService {
         return parameter;
     }
     public ResultVo updatePicture(Picture parameter){
-        int i = pictureMapper.updateByPrimaryKey(parameter);
+        int i = pictureMapper.updateByPrimaryKeySelective(parameter);
         if(i>0){
             return ResultVo.success("图片修改成功");
         }else{
             return ResultVo.error(500,"修改失败");
         }
+    }
+
+    @Override
+    public List<Picture> selectByIdS(String id) {
+        List<Picture> picture = pictureMapper.selectByPrimaryKeyS(Integer.parseInt(id));
+        return picture;
     }
 }

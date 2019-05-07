@@ -20,4 +20,6 @@ public interface PictureMapper {
     int updateByPrimaryKey(Picture record);
 
     List<Picture> selectAll();
+
+    List<Picture> selectByPrimaryKeyS(int i);
 }

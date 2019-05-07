@@ -17,4 +17,6 @@ public interface ParameterService {
     public ResultVo deleteParameter(String id);
     public Parameter selectById(String id);
     public ResultVo updateParameter(Parameter parameter);
+
+    Parameter selectByIdS(String id);
 }

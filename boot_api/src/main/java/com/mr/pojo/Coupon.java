@@ -1,5 +1,7 @@
 package com.mr.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -11,7 +13,7 @@ public class Coupon {
     private Double coMoney;
 
     private Double coLimit;
-
+@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date coValid;
 
     private Integer coStates;

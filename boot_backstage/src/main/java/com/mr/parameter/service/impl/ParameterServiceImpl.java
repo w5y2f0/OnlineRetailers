@@ -45,11 +45,17 @@ public class ParameterServiceImpl implements ParameterService {
         return parameter;
     }
     public ResultVo updateParameter(Parameter parameter){
-        int i = parameterMapper.updateByPrimaryKey(parameter);
+        int i = parameterMapper.updateByPrimaryKeySelective(parameter);
         if(i>0){
             return ResultVo.success("修改成功");
         }else{
             return ResultVo.error(500,"修改失败");
         }
+    }
+
+    @Override
+    public Parameter selectByIdS(String id) {
+        Parameter parameter = parameterMapper.selectByPrimaryKeyS(Integer.parseInt(id));
+        return parameter;
     }
 }

@@ -46,12 +46,11 @@
                         <dd><a href="javascript:add();">商品上架</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">解决方案</a>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">优惠券信息</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
+                        <dd><a href="javascript:list1();">优惠券列表</a></dd>
+                        <dd><a href="javascript:add1();">添加优惠券</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="">云市场</a></li>
@@ -87,6 +86,11 @@
         document.getElementById("qqq").style.display="none";//隐藏
         document.getElementById("www").style.display="";//显示
         $("#demoAdmin").attr("src","goods/addGoods");
+    }
+    function add1() {
+        document.getElementById("qqq").style.display="none";//隐藏
+        document.getElementById("www").style.display="";//显示
+        $("#demoAdmin").attr("src","coupon/addCoupon");
     }
     function list() {
         document.getElementById("www").style.display="none";//隐藏
@@ -147,7 +151,9 @@
                 var tr = obj.tr; //获得当前行 tr 的DOM对象
 
                 if (layEvent === 'detail') { //查看
-
+                    document.getElementById("qqq").style.display="none";//隐藏
+                    document.getElementById("www").style.display="";//显示
+                    $("#demoAdmin").attr("src","goods/selectByIdS?id="+data.goId);
                 } else if (layEvent === 'del') { //删除
                     layer.confirm('确定删除['+data.goName+']吗', function (index) {
                         jQuery.ajax({
@@ -177,10 +183,98 @@
             });
         });
     }
+    function list1() {
+        document.getElementById("www").style.display="none";//隐藏
+        document.getElementById("qqq").style.display="";//显示
+//        $('#qqq').html("<table id="table" lay-filter="table"></table>");
+//        $('#ert').empty();//jQuery方法一
+//        $('#ert').html('');//jQuery方法二
+        $("#demoAdmin").attr("src","");
+        layui.use('table', function(){
+            var table = layui.table;
+            //第一个实例
+            table.render({
+                id:'table'
+                ,elem: '#table'
+                ,url: '/coupon/selectAll' //数据接口
+                ,page: true //开启分页
+                ,cols: [[ //表头
+                    {field: 'coId', title: 'ID', sort: true, fixed: 'left',align:"center"}
+                    ,{field: 'coMoney', title: '优惠券价值', sort: true, fixed: 'left',align:"center"}
+                    ,{field: 'coLimit', title: '优惠条件',align:"center"}
+                    ,{field: 'coValid', title: '有效时间',  sort: true,align:"center"}
+                    ,{field: 'coStates', title: '优惠券状态',align:"center",templet:function (row){
+                        if(row.coStates==1){
+//                            return "可领取";
+                            return '<span class="layui-btn layui-btn-green layui-btn-xs">可领取</span>';
+                        }else if(row.coStates==2){
+//                            return "不可领取";
+                            return '<span class="layui-btn layui-btn-warm layui-btn-xs">不可领取</span>';
+                        }else if(row.coStates==3){
+//                            return "已领完";
+                            return '<span class="layui-btn layui-btn-danger layui-btn-xs">已领完</span>';
+                        }else{
+                            return row.coStates;
+                        }
+                    }}
+                    ,{field: 'coNum', title: '优惠券数量',align:"center"}
+                    ,{title:'操作',toolbar:"#barDemo1",align:"center"}
+                ]]
+            });
+            table.on('tool(table)', function(obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+                data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+                if (layEvent === 'detail1') { //查看
+
+                } else if (layEvent === 'del1') { //删除
+                    layer.confirm('确定删除['+data.coId+']吗', function (index) {
+                        jQuery.ajax({
+                            url:"/coupon/deleteCoupon",
+                            type:'post',
+                            data:{"id":data.coId},
+                            beforeSend:function () {
+                                this.layerIndex = layer.load(0, { shade: [0.5, '#67231'] });
+                            },
+                            success:function (msg) {
+                                table.reload('table', {
+                                    page: {
+                                        curr: 1
+                                    }
+                                });
+                            },
+                            error:function () {
+                                layer.alert('ERROR', {
+                                    title: '提示'
+                                })
+                            }
+                        });
+                    });
+                } else if (layEvent === 'edit') { //编辑
+
+                }
+            });
+        });
+    }
+    function select(id) {
+        $.ajax({
+            type: "get",
+            url: "goods/selectByIdS",
+            data:{"id":id},
+            success: function (msg) {
+                alert("adasvasv");
+            }
+        });
+    }
 </script>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-green" lay-event="detail">编辑</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs " lay-event="detail">编辑</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-danger" lay-event="del" id = "del">删除</a>
+</script>
+<script type="text/html" id="barDemo1">
+    <a class="layui-btn layui-btn-primary layui-btn-xs " lay-event="detail1" id = "detail">编辑</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-danger" lay-event="del1" id = "del">删除</a>
 </script>
 </body>
 </html>

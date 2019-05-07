@@ -28,7 +28,7 @@
     delete from t_goods
     where go_id = #{goId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mr.pojo.Goods">
+  <insert id="insert" parameterType="com.mr.pojo.Goods" keyProperty="goId" useGeneratedKeys="true">
     insert into t_goods (go_id, go_name, go_synopsis, 
       go_detailed, go_type, go_states, 
       go_DateTimeS, go_Sales, go_old, 

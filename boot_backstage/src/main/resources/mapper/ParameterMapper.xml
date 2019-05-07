@@ -19,6 +19,12 @@
     from t_parameter
     where par_id = #{parId,jdbcType=INTEGER}
   </select>
+  <select id="selectByPrimaryKeyS" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_parameter
+    where go_id = #{goId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_parameter
     where par_id = #{parId,jdbcType=INTEGER}

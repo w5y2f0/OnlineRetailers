@@ -18,4 +18,6 @@ public interface PictureService {
     public ResultVo deletePicture(String id);
     public Picture selectById(String id);
     public ResultVo updatePicture(Picture parameter);
+
+    List<Picture> selectByIdS(String id);
 }

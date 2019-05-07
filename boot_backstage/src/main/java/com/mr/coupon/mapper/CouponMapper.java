@@ -7,6 +7,10 @@ import java.util.List;
 
 @Mapper
 public interface CouponMapper  {
+
+//    default int qwer(Integer coId){
+//        return 1;
+//    }
     int deleteByPrimaryKey(Integer coId);
 
     int insert(Coupon record);

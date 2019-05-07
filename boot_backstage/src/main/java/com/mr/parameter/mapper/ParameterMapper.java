@@ -20,4 +20,6 @@ public interface ParameterMapper {
     int updateByPrimaryKey(Parameter record);
 
     List<Parameter> selectAll();
+
+    Parameter selectByPrimaryKeyS(int i);
 }

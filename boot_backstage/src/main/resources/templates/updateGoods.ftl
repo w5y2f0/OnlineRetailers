@@ -14,22 +14,23 @@
 </head>
 <body>
 <form class="layui-form" style="margin-top: 10px; padding: 20px" id = "add">
+    <input type="hidden" name ="goId" value="${data.goId}"/>
     <div class="layui-form-item">
         <label class="layui-form-label">商品名称：</label>
         <div class="layui-input-inline">
-            <input type="tel" name="goName" lay-verify="title" autocomplete="off" placeholder="请输入商品名称" class="layui-input">
+            <input type="tel" name="goName" lay-verify="title" autocomplete="off" placeholder="请输入商品名称" class="layui-input" value="${data.goName}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品简介：</label>
         <div class="layui-input-block">
-            <input type="text" name="goSynopsis" lay-verify="title" autocomplete="off" placeholder="请输入商品简介" class="layui-input">
+            <input type="text" name="goSynopsis" lay-verify="title" autocomplete="off" placeholder="请输入商品简介" class="layui-input"value="${data.goSynopsis}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品描述：</label>
     </div>
-    <script id="container" name="goDetailed" type="text/plain">商品详情</script>
+    <script id="container" name="goDetailed" type="text/plain">${data.goDetailed}"</script>
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
         var ue = UE.getEditor('container');
@@ -47,74 +48,75 @@
     <div class="layui-form-item">
         <label class="layui-form-label">商品类型</label>
         <select name="goType" lay-verify="">
-            <option value="">请选择一个类型</option>
-            <option value="1">类型1</option>
-            <option value="2">类型2</option>
-            <option value="3">类型3</option>
-            <option value="4">类型4</option>
-            <option value="5">类型5</option>
-            <option value="6">类型6</option>
+            <option value="" >请选择一个类型</option>
+            <option value="1"  <#if data.goType==1>selected </#if> >类型1</option>
+            <option value="2" <#if data.goType==2>selected</#if>>类型2</option>
+            <option value="3" <#if data.goType==3>selected</#if>>类型3</option>
+            <option value="4" <#if data.goType==4>selected</#if>>类型4</option>
+            <option value="5" <#if data.goType==5>selected</#if>>类型5</option>
+            <option value="6" <#if data.goType==6>selected</#if>>类型6</option>
         </select>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品状态</label>
         <div class="layui-input-block">
-            <input type="radio" name="goStates" value="1" title="上架" checked="">
-            <input type="radio" name="goStates" value="2" title="未上架">
+            <input type="radio" name="goStates" value="1" title="上架" <#if data.goStates==1>checked </#if> >
+            <input type="radio" name="goStates" value="2" title="未上架" <#if data.goStates==2>checked </#if> >
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品原价：</label>
         <div class="layui-input-inline" margin-top:30px>
-            <input type="text" id = "old" lay-verify="required" name = "goOld" autocomplete="off" placeholder="" class="layui-input"onKeyUp="amount(this)"  onBlur="overFormat(this)">
+            <input type="text" id = "old" lay-verify="required" name = "goOld" autocomplete="off" placeholder="" class="layui-input" value="${data.goOld}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品现价：</label>
         <div class="layui-input-inline" margin-top:30px>
-            <input type="text" id = "new" lay-verify="required" name = "goNew" autocomplete="off" placeholder="" class="layui-input"onKeyUp="amount(this)"  onBlur="overFormat(this)">
+            <input type="text" id = "new" lay-verify="required" name = "goNew" autocomplete="off" placeholder="" class="layui-input" value="${data.goNew}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品库存：</label>
         <div class="layui-input-inline" margin-top:30px>
-            <input type="text"  lay-verify="required" name = "goNum" autocomplete="off" placeholder="" class="layui-input"onKeyUp="amount(this)" >
+            <input type="text"  lay-verify="required" name = "goNum" autocomplete="off" placeholder="" class="layui-input" value="${data.goNum}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品参数信息</label>
     </div>
+    <input type="hidden" name = "parId" value="${data.parId}"/>
     <div class="layui-form-item" pane="">
         <label class="layui-form-label">商品颜色</label>
         <div class="layui-input-block">
-            <input type="checkbox" name="paColor" lay-skin="primary" title="红色" value="1">
-            <input type="checkbox" name="paColor" lay-skin="primary" title="粉色" value="2">
-            <input type="checkbox" name="paColor" lay-skin="primary" title="白色" value="3">
-            <input type="checkbox" name="paColor" lay-skin="primary" title="其他" value="4">
+            <input type="checkbox" name="paColor" lay-skin="primary" title="红色" value="1" <#if data.paColor=="1">checked </#if>>
+            <input type="checkbox" name="paColor" lay-skin="primary" title="粉色" value="2"<#if data.paColor=="2">checked </#if>>
+            <input type="checkbox" name="paColor" lay-skin="primary" title="白色" value="3"<#if data.paColor=="3">checked </#if>>
+            <input type="checkbox" name="paColor" lay-skin="primary" title="其他" value="4"<#if data.paColor=="4">checked </#if>>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品质量：</label>
         <div class="layui-input-inline" margin-top:30px>
-            <input type="text" id = "new" lay-verify="required" name = "paWeight" autocomplete="off" placeholder="" class="layui-input"onKeyUp="amount(this)">
+            <input type="text" id = "new" lay-verify="required" name = "paWeight" autocomplete="off" placeholder="" class="layui-input" value="${data.paWeight}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品规格：</label>
         <div class="layui-input-inline" margin-top:30px>
-            <input type="text" id = "new" lay-verify="required" name = "goSpecs" autocomplete="off" placeholder="" class="layui-input"onKeyUp="amount(this)"  onBlur="overFormat(this)">
+            <input type="text" id = "new" lay-verify="required" name = "goSpecs" autocomplete="off" placeholder="" class="layui-input"  value="${data.goSpecs}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品材料</label>
         <div class="layui-input-inline">
-            <input type="text" name="goMaterial" lay-verify="title" autocomplete="off" placeholder="" class="layui-input">
+            <input type="text" name="goMaterial" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" value="${data.goMaterial}">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">商品包装</label>
         <div class="layui-input-inline">
-            <input type="text" name="goPacking" lay-verify="title" autocomplete="off" placeholder="" class="layui-input">
+            <input type="text" name="goPacking" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" value="${data.goPacking}">
         </div>
     </div>
     <label class="layui-form-label">商品图片信息</label>
@@ -129,11 +131,16 @@
                 </div>
                 <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
                     预览图：
-                    <div class="layui-upload-list" id="demo2"></div>
+                    <div class="layui-upload-list" id="demo2">
+                                    <#list qwer as data>
+                                        <input type="hidden" name = "piId" value="${data.piId}"/>
+                                        <img src="../imgs/${data.piUrl}" alt="${data.piUrl}" height="92px" width="92px" class="layui-upload-img uploadImgPreView">
+                                    </#list>
+                                </div>
                 </blockquote>
             </div>
-        
-        <input type="text" id="imgUrls" name="imgUrls" style="display: none;" class="layui-input">
+        <input type="hidden" name = "qaz" value="${data.piUrl}"/>
+        <input type="text" id="imgUrls" name="piUrl" style="display: none;" class="layui-input">
         <div class="layui-form-item">
             <div class="layui-input-block">
                         <button class="layui-btn"  style="width: 800px;" onclick="sub()">上架</button>
@@ -142,7 +149,6 @@
 </form>
 
 <script>
-
     var success=0;
     var fail=0;
     var imgurls="";
@@ -152,7 +158,6 @@
         layui.use(['upload','layer'],function() {
             var upload = layui.upload;
             var layer=layui.layer;
-
             upload.render({
                 elem: '#test1',
                 url: '/upload',
@@ -243,7 +248,7 @@
 //    }
     function sub() {
         jQuery.ajax({
-            url:'insertGood',
+            url:'updateGood',
             type:'post',
             data:$("#add").serialize(),
             success:function (data) {
@@ -272,62 +277,6 @@
         var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
         form.render();
     });
-    /**
-     * 实时动态强制更改用户录入
-     * arg1 inputObject
-     **/
-    function amount(th) {
-        var regStrs = [
-            ['^0(\\d+)$', '$1'], //禁止录入整数部分两位以上，但首位为0
-            ['[^\\d\\.]+$', ''], //禁止录入任何非数字和点
-            ['\\.(\\d?)\\.+', '.$1'], //禁止录入两个以上的点
-            ['^(\\d+\\.\\d{2}).+', '$1'] //禁止录入小数点后两位以上
-        ];
-        for (var i = 0; i < regStrs.length; i++) {
-            var reg = new RegExp(regStrs[i][0]);
-            th.value = th.value.replace(reg, regStrs[i][1]);
-        }
-    }
-    /**
-     * 录入完成后，输入模式失去焦点后对录入进行判断并强制更改，并对小数点进行0补全
-     * arg1 inputObject
-     **/
-    function overFormat(th) {
-        var v = th.value;
-        if (v === '') {
-            v = '0.00';
-        } else if (v === '0') {
-            v = '0.00';
-        } else if (v === '0.') {
-            v = '0.00';
-        } else if (/^0+\d+\.?\d*.*$/.test(v)) {
-            v = v.replace(/^0+(\d+\.?\d*).*$/, '$1');
-            v = inp.getRightPriceFormat(v).val;
-        } else if (/^0\.\d$/.test(v)) {
-            v = v + '0';
-        } else if (!/^\d+\.\d{2}$/.test(v)) {
-            if (/^\d+\.\d{2}.+/.test(v)) {
-                v = v.replace(/^(\d+\.\d{2}).*$/, '$1');
-            } else if (/^\d+$/.test(v)) {
-                v = v + '.00';
-            } else if (/^\d+\.$/.test(v)) {
-                v = v + '00';
-            } else if (/^\d+\.\d$/.test(v)) {
-                v = v + '0';
-            } else if (/^[^\d]+\d+\.?\d*$/.test(v)) {
-                v = v.replace(/^[^\d]+(\d+\.?\d*)$/, '$1');
-            } else if (/\d+/.test(v)) {
-                v = v.replace(/^[^\d]*(\d+\.?\d*).*$/, '$1');
-                ty = false;
-            } else if (/^0+\d+\.?\d*$/.test(v)) {
-                v = v.replace(/^0+(\d+\.?\d*)$/, '$1');
-                ty = false;
-            } else {
-                v = '0.00';
-            }
-        }
-        th.value = v;
-    }
 </script>
 </body>
 </html>
