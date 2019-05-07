@@ -23,18 +23,23 @@ public class TypeServiceImpl implements TypeService {
 
     //查询所有
     @Override
-    public List<Type> selectAll(Page page) {
-        PageHelper.startPage(page.getPage(), page.getLimit());
+    public PageInfo<Type> selectAll(Page page) {
+        if(page == null){
+            page = new Page();
+        }
+        PageHelper.startPage(page.getPage(),page.getLimit());
         List<Type> typeList = typeMapper.selectAll();
-        return typeList;
+        PageInfo<Type> typePageInfo = new PageInfo<>(typeList);
+        return typePageInfo;
     }
 
     //新增
     @Override
     public ResultVo insertType(Type type) {
-        typeMapper.insertType(type);
-        return ResultVo.success("商品类型信息，新增成功！！！");
+            typeMapper.insertType(type);
+            return ResultVo.success("商品类型信息，新增成功！！！");
     }
+
 
     //根据编号删除
     @Override
