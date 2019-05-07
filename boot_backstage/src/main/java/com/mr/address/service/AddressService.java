@@ -5,12 +5,16 @@ import com.mr.address.Address;
 import com.mr.utils.Page;
 import com.mr.utils.ResultVo;
 
+import java.util.List;
+
 /**
  * Created by Fan on 2019/4/30.
  */
 public interface AddressService {
 
     PageInfo<Address> selectAll(Page page);
+
+    List<Address> selectAll();
 
     ResultVo addAddress(Address address);
 

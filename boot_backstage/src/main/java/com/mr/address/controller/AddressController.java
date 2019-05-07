@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * Created by Fan on 2019/4/30.
  */
@@ -32,19 +34,27 @@ public class AddressController {
         return gridVo;
     }
 
+    @RequestMapping("selectAddress")
+    @ResponseBody
+    public List<Address> selectAddress() {
+        return addressService.selectAll();
+    }
+
     @RequestMapping("deleteAddress")
     @ResponseBody
-    public ResultVo deleteAddress(Integer aId){
+    public ResultVo deleteAddress(Integer aId) {
         return addressService.deleteById(aId);
     }
+
     @RequestMapping("updateAddress")
     @ResponseBody
-    public ResultVo updateAddress(Address address){
+    public ResultVo updateAddress(Address address) {
         return addressService.updateAddress(address);
     }
+
     @RequestMapping("selectById")
     @ResponseBody
-    public Address selectById(Integer aId){
+    public Address selectById(Integer aId) {
         return addressService.selectById(aId);
     }
 }
