@@ -5,18 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
 
-    <title>我的足迹</title>
+    <title>地址管理</title>
 
     <link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
     <link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
 
     <link href="css/personal.css" rel="stylesheet" type="text/css">
-    <link href="css/footstyle.css" rel="stylesheet" type="text/css">
+    <link href="css/addstyle.css" rel="stylesheet" type="text/css">
+    <script src="AmazeUI-2.4.2/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="AmazeUI-2.4.2/assets/js/amazeui.js"></script>
 
 </head>
 
 <body>
-<!--头 -->
 <!--头 -->
 <header>
     <article>
@@ -73,6 +74,7 @@
         </div>
     </article>
 </header>
+
 <div class="nav-table">
     <div class="long-title"><span class="all-goods">全部分类</span></div>
     <div class="nav-cont">
@@ -90,62 +92,111 @@
     </div>
 </div>
 <b class="line"></b>
+
 <div class="center">
     <div class="col-main">
         <div class="main-wrap">
-            <div class="user-foot">
+
+            <div class="user-address">
                 <!--标题 -->
                 <div class="am-cf am-padding">
-                    <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">我的足迹</strong> /
-                        <small>Browser&nbsp;History</small>
+                    <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">地址管理</strong> /
+                        <small>Address&nbsp;list</small>
                     </div>
                 </div>
                 <hr/>
-                <!--足迹列表 -->
-            <#list goodsList as list>
-                <div class="goods">
-                    <div class="goods-box first-box">
-                        <div class="goods-pic">
-                            <div class="goods-pic-box">
-                                <a class="goods-pic-link" target="_blank" href="#" title="${list.goName}">
-                                    <img src="images/TB1_pic.jpg_200x200.jpg" class="goods-img"></a>
-                            </div>
-                            <a class="goods-delete" href="javascript:void(0);"><i class="am-icon-trash"></i></a>
-                            <div class="goods-status goods-status-show"><span class="desc">
-                                <#if list.goStates==1>商品已上架
-                                <#else>商品已下架
-                                </#if>
-                            </span></div>
+                <ul class="am-avg-sm-1 am-avg-md-3 am-thumbnails">
+                <#list addressList as list>
+                    <li class="user-addresslist">
+                        <span class="new-option-r"><i class="am-icon-check-circle"></i>设为默认</span>
+                        <p class="new-tit new-p-re">
+                            <span class="new-txt">${list.addressName}</span>
+                            <span class="new-txt-rd2">${list.addressPhone}</span>
+                        </p>
+                        <div class="new-mu_l2a new-p-re">
+                            <p class="new-mu_l2cw">
+                                <span class="title">地址：</span>
+                                <span class="province">${list.address}</span>
+                            </p>
                         </div>
+                        <div class="new-addr-btn">
+                            <a href="#"><i class="am-icon-edit"></i>编辑</a>
+                            <span class="new-addr-bar">|</span>
+                            <a href="javascript:void(0);" onClick="delClick(this);"><i class="am-icon-trash"></i>删除</a>
+                        </div>
+                    </li>
+                </#list>
+                </ul>
+                <div class="clear"></div>
+                <a class="new-abtn-type" data-am-modal="{target: '#doc-modal-1', closeViaDimmer: 0}">添加新地址</a>
+                <!--例子-->
+                <div class="am-modal am-modal-no-btn" id="doc-modal-1">
 
-                        <div class="goods-attr">
-                            <div class="good-title">
-                                <a class="title" href="#" target="_blank">${list.goName}</a>
+                    <div class="add-dress">
+
+                        <!--标题 -->
+                        <div class="am-cf am-padding">
+                            <div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">新增地址</strong> /
+                                <small>Add&nbsp;address</small>
                             </div>
-                            <div class="goods-price">
-										<span class="g_price">
-                                        <span>¥</span><strong>${list.goNew}</strong>
-										</span>
-                                <span class="g_price g_price-original">
-                                            <span>¥</span><strong>${list.goOld}</strong>
-										</span>
-                            </div>
-                            <div class="clear"></div>
-                            <div class="goods-num">
-                                <div class="match-recom">
-                                    <a href="#" class="match-recom-item">找相似</a>
-                                    <a href="#" class="match-recom-item">找搭配</a>
-                                    <i><em></em><span></span></i>
+                        </div>
+                        <hr/>
+
+                        <div class="am-u-md-12 am-u-lg-8" style="margin-top: 20px;">
+                            <form class="am-form am-form-horizontal">
+
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-form-label">收货人</label>
+                                    <div class="am-form-content">
+                                        <input type="text" id="user-name" placeholder="收货人">
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="am-form-group">
+                                    <label for="user-phone" class="am-form-label">手机号码</label>
+                                    <div class="am-form-content">
+                                        <input id="user-phone" placeholder="手机号必填" type="email">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="user-intro" class="am-form-label">详细地址</label>
+                                    <div class="am-form-content">
+                                        <textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
+                                        <small>100字以内写出你的详细地址...</small>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <a class="am-btn am-btn-danger">保存</a>
+                                        <a href="javascript: void(0)" class="am-close am-btn am-btn-danger"
+                                           data-am-modal-close>取消</a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </#list>
-                <div class="clear"></div>
             </div>
-        </div>
 
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(".new-option-r").click(function () {
+                        $(this).parent('.user-addresslist').addClass("defaultAddr").siblings().removeClass("defaultAddr");
+                    });
+
+                    var $ww = $(window).width();
+                    if ($ww > 640) {
+                        $("#doc-modal-1").removeClass("am-modal am-modal-no-btn")
+                    }
+
+                })
+            </script>
+
+            <div class="clear"></div>
+
+        </div>
         <!--底部-->
         <div class="footer">
             <div class="footer-hd">
@@ -181,7 +232,7 @@
                 <ul>
                     <li><a href="information.html">个人信息</a></li>
                     <li><a href="safety.html">安全设置</a></li>
-                    <li><a href="toAddress">收货地址</a></li>
+                    <li class="active"><a href="address.html">收货地址</a></li>
                 </ul>
             </li>
             <li class="person">
@@ -204,7 +255,7 @@
                 <a href="#">我的小窝</a>
                 <ul>
                     <li><a href="collection.html">收藏</a></li>
-                    <li class="active"><a href="foot.html">足迹</a></li>
+                    <li><a href="foot.html">足迹</a></li>
                     <li><a href="comment.html">评价</a></li>
                     <li><a href="news.html">消息</a></li>
                 </ul>

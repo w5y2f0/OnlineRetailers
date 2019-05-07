@@ -1,5 +1,7 @@
 package com.mr.index.controller;
 
+import com.mr.address.Address;
+import com.mr.address.service.AddressService;
 import com.mr.index.service.IndexService;
 import com.mr.pojo.Goods;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class indexController {
 
     @Autowired
     private IndexService indexService;
+
+    @Autowired
+    private AddressService addressService;
 
     @RequestMapping("shopcart")
     public ModelAndView toShopCart() {
@@ -58,15 +63,20 @@ public class indexController {
     @RequestMapping("toFoot")
     public ModelAndView toFoot() {
         ModelAndView view = new ModelAndView("foot");
+        List<Goods> goodsList = indexService.selectAllFoot();
+        view.addObject("goodsList",goodsList);
         return view;
     }
 
-    @RequestMapping("selectAllFoot")
-    @ResponseBody
-    public List<Goods> selectAllFoot(){
-        return indexService.selectAllFoot();
+    @RequestMapping("toAddress")
+    public ModelAndView toAddress() {
+        ModelAndView view = new ModelAndView("address");
+        List<Address> addressList = addressService.selectAllAddress();
+        view.addObject("addressList",addressList);
+        return view;
     }
 
+//-----------------------------------------------------------------------------------
     @RequestMapping("addFoot")
     @ResponseBody
     public void addFoot(Goods goods){

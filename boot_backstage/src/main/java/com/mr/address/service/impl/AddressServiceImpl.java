@@ -34,6 +34,11 @@ public class AddressServiceImpl  implements AddressService{
     }
 
     @Override
+    public List<Address> selectAll() {
+        return addressMapper.selectAll();
+    }
+
+    @Override
     public ResultVo addAddress(Address address) {
         addressMapper.insert(address);
         return ResultVo.success("增加成功");
