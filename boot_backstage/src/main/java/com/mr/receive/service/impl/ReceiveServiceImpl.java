@@ -45,7 +45,7 @@ public class ReceiveServiceImpl implements ReceiveService {
         Receive parameter = receiveMapper.selectByPrimaryKey(Integer.parseInt(id));
         return parameter;
     }
-    public ResultVo updatePicture(Receive parameter){
+    public ResultVo updateReceive(Receive parameter){
         int i = receiveMapper.updateByPrimaryKey(parameter);
         if(i>0){
             return ResultVo.success("修改成功");

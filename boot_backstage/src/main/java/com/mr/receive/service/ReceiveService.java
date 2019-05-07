@@ -16,5 +16,5 @@ public interface ReceiveService {
     public ResultVo insertReceive(Receive parameter);
     public ResultVo deleteReceive(String id);
     public Receive selectById(String id);
-    public ResultVo updatePicture(Receive parameter);
+    public ResultVo updateReceive(Receive parameter);
 }
