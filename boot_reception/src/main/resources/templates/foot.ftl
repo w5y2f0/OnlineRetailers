@@ -93,7 +93,6 @@
 <div class="center">
     <div class="col-main">
         <div class="main-wrap">
-
             <div class="user-foot">
                 <!--标题 -->
                 <div class="am-cf am-padding">
@@ -182,7 +181,7 @@
                 <ul>
                     <li><a href="information.html">个人信息</a></li>
                     <li><a href="safety.html">安全设置</a></li>
-                    <li><a href="address.html">收货地址</a></li>
+                    <li><a href="toAddress">收货地址</a></li>
                 </ul>
             </li>
             <li class="person">
