@@ -45,7 +45,7 @@ public class CouponServiceImpl implements CouponService {
         return coupon;
     }
     public ResultVo updateCoupon(Coupon coupon){
-        int i = couponMapper.updateByPrimaryKey(coupon);
+        int i = couponMapper.updateByPrimaryKeySelective(coupon);
         if(i>0){
             return ResultVo.success("优惠券信息修改成功");
         }else{

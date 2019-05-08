@@ -8,6 +8,7 @@ import com.mr.utils.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.ws.rs.GET;
 import java.util.HashMap;
@@ -56,7 +57,16 @@ public class CouponController {
         Coupon coupon = couponService.selectById(id);
         return coupon;
     }
-    @PostMapping("updateCoupon")
+    @GetMapping("selectByIds")
+    @ResponseBody
+    public ModelAndView  selectByIdS(String id){
+        Coupon coupon = couponService.selectById(id);
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("data",coupon);
+        mav.setViewName("updateCoupon");
+        return mav;
+    }
+    @PostMapping("updateCouponS")
     @ResponseBody
     public ResultVo updateCoupon(Coupon coupon){
         ResultVo resultVo = couponService.updateCoupon(coupon);
