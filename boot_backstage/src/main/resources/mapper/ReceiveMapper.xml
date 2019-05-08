@@ -1,107 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mr.receive.mapper.ReceiveMapper">
-  <resultMap id="BaseResultMap" type="com.mr.pojo.Receive">
-    <id column="re_id" jdbcType="INTEGER" property="reId" />
-    <result column="go_id" jdbcType="INTEGER" property="goId" />
-    <result column="co_id" jdbcType="INTEGER" property="coId" />
-    <result column="re_time" jdbcType="DATE" property="reTime" />
-    <result column="re_use" jdbcType="INTEGER" property="reUse" />
-    <result column="re_term" jdbcType="INTEGER" property="reTerm" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    re_id, go_id, co_id, re_time, re_use, re_term
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_receive
-    where re_id = #{reId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_receive
-    where re_id = #{reId,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.mr.pojo.Receive">
-    insert into t_receive (re_id, go_id, co_id, 
-      re_time, re_use, re_term)
-    values (#{reId,jdbcType=INTEGER}, #{goId,jdbcType=INTEGER}, #{coId,jdbcType=INTEGER}, 
-      #{reTime,jdbcType=DATE}, #{reUse,jdbcType=INTEGER}, #{reTerm,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.mr.pojo.Receive">
-    insert into t_receive
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="reId != null">
-        re_id,
-      </if>
-      <if test="goId != null">
-        go_id,
-      </if>
-      <if test="coId != null">
-        co_id,
-      </if>
-      <if test="reTime != null">
-        re_time,
-      </if>
-      <if test="reUse != null">
-        re_use,
-      </if>
-      <if test="reTerm != null">
-        re_term,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="reId != null">
-        #{reId,jdbcType=INTEGER},
-      </if>
-      <if test="goId != null">
-        #{goId,jdbcType=INTEGER},
-      </if>
-      <if test="coId != null">
-        #{coId,jdbcType=INTEGER},
-      </if>
-      <if test="reTime != null">
-        #{reTime,jdbcType=DATE},
-      </if>
-      <if test="reUse != null">
-        #{reUse,jdbcType=INTEGER},
-      </if>
-      <if test="reTerm != null">
-        #{reTerm,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mr.pojo.Receive">
-    update t_receive
-    <set>
-      <if test="goId != null">
-        go_id = #{goId,jdbcType=INTEGER},
-      </if>
-      <if test="coId != null">
-        co_id = #{coId,jdbcType=INTEGER},
-      </if>
-      <if test="reTime != null">
-        re_time = #{reTime,jdbcType=DATE},
-      </if>
-      <if test="reUse != null">
-        re_use = #{reUse,jdbcType=INTEGER},
-      </if>
-      <if test="reTerm != null">
-        re_term = #{reTerm,jdbcType=INTEGER},
-      </if>
-    </set>
-    where re_id = #{reId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mr.pojo.Receive">
+    <resultMap id="BaseResultMap" type="com.mr.pojo.Receive">
+        <id column="re_id" jdbcType="INTEGER" property="reId"/>
+        <result column="go_id" jdbcType="INTEGER" property="goId"/>
+        <result column="u_id" jdbcType="INTEGER" property="uId"/>
+        <result column="co_id" jdbcType="INTEGER" property="coId"/>
+        <result column="re_time" jdbcType="DATE" property="reTime"/>
+        <result column="re_use" jdbcType="INTEGER" property="reUse"/>
+        <result column="re_term" jdbcType="INTEGER" property="reTerm"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+       re_id, go_id,u_id, co_id, re_time, re_use, re_term
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_receive
+        where re_id = #{reId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from t_receive
+        where re_id = #{reId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.mr.receive.pojo.Receive">
+        insert into t_receive (re_id, go_id, u_id,
+        co_id, re_time, re_use, re_term
+        )
+        values (#{reId,jdbcType=INTEGER}, #{goId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER},
+        #{coId,jdbcType=INTEGER}, #{reTime,jdbcType=DATE}, #{reUse,jdbcType=INTEGER}, #{reTerm,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.mr.receive.pojo.Receive">
+        insert into t_receive
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="reId != null">
+                re_id,
+            </if>
+            <if test="goId != null">
+                go_id,
+            </if>
+            <if test="uId != null">
+                u_id,
+            </if>
+            <if test="coId != null">
+                co_id,
+            </if>
+            <if test="reTime != null">
+                re_time,
+            </if>
+            <if test="reUse != null">
+                re_use,
+            </if>
+            <if test="reTerm != null">
+                re_term,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="reId != null">
+                #{reId,jdbcType=INTEGER},
+            </if>
+            <if test="goId != null">
+                #{goId,jdbcType=INTEGER},
+            </if>
+            <if test="uId != null">
+                #{uId,jdbcType=INTEGER},
+            </if>
+            <if test="coId != null">
+                #{coId,jdbcType=INTEGER},
+            </if>
+            <if test="reTime != null">
+                #{reTime,jdbcType=DATE},
+            </if>
+            <if test="reUse != null">
+                #{reUse,jdbcType=INTEGER},
+            </if>
+            <if test="reTerm != null">
+                #{reTerm,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mr.receive.pojo.Receive">
+        update t_receive
+        <set>
+            <if test="goId != null">
+                go_id = #{goId,jdbcType=INTEGER},
+            </if>
+            <if test="uId != null">
+                u_id = #{uId,jdbcType=INTEGER},
+            </if>
+            <if test="coId != null">
+                co_id = #{coId,jdbcType=INTEGER},
+            </if>
+            <if test="reTime != null">
+                re_time = #{reTime,jdbcType=DATE},
+            </if>
+            <if test="reUse != null">
+                re_use = #{reUse,jdbcType=INTEGER},
+            </if>
+            <if test="reTerm != null">
+                re_term = #{reTerm,jdbcType=INTEGER},
+            </if>
+        </set>
+        where re_id = #{reId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mr.receive.pojo.Receive">
     update t_receive
     set go_id = #{goId,jdbcType=INTEGER},
+      u_id = #{uId,jdbcType=INTEGER},
       co_id = #{coId,jdbcType=INTEGER},
       re_time = #{reTime,jdbcType=DATE},
       re_use = #{reUse,jdbcType=INTEGER},
       re_term = #{reTerm,jdbcType=INTEGER}
     where re_id = #{reId,jdbcType=INTEGER}
   </update>
-  <select id="selectAll" resultType="com.mr.pojo.Receive">
+    <select id="selectAll" resultType="com.mr.pojo.Receive">
     select * from t_receive
   </select>
 </mapper>
