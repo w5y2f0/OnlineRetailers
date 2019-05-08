@@ -64,7 +64,7 @@ public class indexController {
     public ModelAndView toFoot() {
         ModelAndView view = new ModelAndView("foot");
         List<Goods> goodsList = indexService.selectAllFoot();
-        view.addObject("goodsList",goodsList);
+        view.addObject("goodsList", goodsList);
         return view;
     }
 
@@ -72,14 +72,26 @@ public class indexController {
     public ModelAndView toAddress() {
         ModelAndView view = new ModelAndView("address");
         List<Address> addressList = addressService.selectAllAddress();
-        view.addObject("addressList",addressList);
+        view.addObject("addressList", addressList);
         return view;
     }
 
-//-----------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------
     @RequestMapping("addFoot")
     @ResponseBody
-    public void addFoot(Goods goods){
+    public void addFoot(Goods goods) {
         indexService.addFoot(goods);
+    }
+
+    @RequestMapping("addAddress")
+    @ResponseBody
+    public void addAddress(Address address) {
+        addressService.addAdddress(address);
+    }
+
+    @RequestMapping("deleteAddress")
+    @ResponseBody
+    public void deleteAddress(Integer aId){
+        addressService.deleteAddress(aId);
     }
 }
