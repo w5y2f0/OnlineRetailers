@@ -183,18 +183,22 @@
             </div>
             <script type="text/javascript">
                 function deleteFun(aid) {
-                    $.ajax({
-                        type: 'get',
-                        url: 'deleteAddress',
-                        data: {"aId":aid},
-                        success: function () {
-                            alert("删除成功")
-                            location.reload();
-                        },
-                        error: function () {
-                            alert("系统错误请联系管理员");
-                        }
-                    });
+                    var mymessage = confirm("你确定要删除吗?");
+                    if (mymessage == true) {
+                        $.ajax({
+                            type: 'get',
+                            url: 'deleteAddress',
+                            data: {"aId": aid},
+                            success: function () {
+                                alert("删除成功")
+                                location.reload();
+                            },
+                        });
+                    }
+                    else {
+                        document.write("JS功能强大，要学习噢!");
+                    }
+
                 }
                 $(document).ready(function () {
                     $(".new-option-r").click(function () {
