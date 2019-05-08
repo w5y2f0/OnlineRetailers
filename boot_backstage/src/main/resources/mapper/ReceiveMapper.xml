@@ -23,7 +23,7 @@
         delete from t_receive
         where re_id = #{reId,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" parameterType="com.mr.receive.pojo.Receive">
+    <insert id="insert" parameterType="com.mr.pojo.Receive">
         insert into t_receive (re_id, go_id, u_id,
         co_id, re_time, re_use, re_term
         )
@@ -31,7 +31,7 @@
         #{coId,jdbcType=INTEGER}, #{reTime,jdbcType=DATE}, #{reUse,jdbcType=INTEGER}, #{reTerm,jdbcType=INTEGER}
         )
     </insert>
-    <insert id="insertSelective" parameterType="com.mr.receive.pojo.Receive">
+    <insert id="insertSelective" parameterType="com.mr.pojo.Receive">
         insert into t_receive
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="reId != null">
@@ -80,7 +80,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.mr.receive.pojo.Receive">
+    <update id="updateByPrimaryKeySelective" parameterType="com.mr.pojo.Receive">
         update t_receive
         <set>
             <if test="goId != null">
@@ -104,7 +104,7 @@
         </set>
         where re_id = #{reId,jdbcType=INTEGER}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.mr.receive.pojo.Receive">
+    <update id="updateByPrimaryKey" parameterType="com.mr.pojo.Receive">
     update t_receive
     set go_id = #{goId,jdbcType=INTEGER},
       u_id = #{uId,jdbcType=INTEGER},
