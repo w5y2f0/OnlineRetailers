@@ -160,15 +160,9 @@
                             url:"/goods/deleteGood",
                             type:'post',
                             data:{"id":data.goId},
-                            beforeSend:function () {
-                                this.layerIndex = layer.load(0, { shade: [0.5, '#67231'] });
-                            },
                             success:function (msg) {
-                                table.reload('table', {
-                                    page: {
-                                        curr: 1
-                                    }
-                                });
+                                list();
+                                layer.closeAll('dialog');
                             },
                             error:function () {
                                 layer.alert('ERROR', {
@@ -227,22 +221,18 @@
                 var tr = obj.tr; //获得当前行 tr 的DOM对象
 
                 if (layEvent === 'detail1') { //查看
-
+                    document.getElementById("qqq").style.display="none";//隐藏
+                    document.getElementById("www").style.display="";//显示
+                    $("#demoAdmin").attr("src","coupon/selectByIds?id="+data.coId);
                 } else if (layEvent === 'del1') { //删除
                     layer.confirm('确定删除['+data.coId+']吗', function (index) {
                         jQuery.ajax({
                             url:"/coupon/deleteCoupon",
                             type:'post',
                             data:{"id":data.coId},
-                            beforeSend:function () {
-                                this.layerIndex = layer.load(0, { shade: [0.5, '#67231'] });
-                            },
                             success:function (msg) {
-                                table.reload('table', {
-                                    page: {
-                                        curr: 1
-                                    }
-                                });
+                                list1();
+                                layer.closeAll('dialog');
                             },
                             error:function () {
                                 layer.alert('ERROR', {
@@ -257,24 +247,15 @@
             });
         });
     }
-    function select(id) {
-        $.ajax({
-            type: "get",
-            url: "goods/selectByIdS",
-            data:{"id":id},
-            success: function (msg) {
-                alert("adasvasv");
-            }
-        });
-    }
 </script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs " lay-event="detail">编辑</a>
     <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-danger" lay-event="del" id = "del">删除</a>
 </script>
 <script type="text/html" id="barDemo1">
-    <a class="layui-btn layui-btn-primary layui-btn-xs " lay-event="detail1" id = "detail">编辑</a>
-    <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-danger" lay-event="del1" id = "del">删除</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs " lay-event="detail1">编辑</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs layui-btn-danger" lay-event="del1" >删除</a>
+
 </script>
 </body>
 </html>

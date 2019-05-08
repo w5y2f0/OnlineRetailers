@@ -12,39 +12,53 @@
 
 </head>
 <body>
+
 <form class="layui-form" style="margin-top: 10px; padding: 20px" id = "cou">
+    <input type="hidden" name="coId" value="${data.coId}"/>
     <div class="layui-form-item">
         <label class="layui-form-label">优惠券价值</label>
         <div class="layui-input-inline">
-            <input type="tel" name="coMoney" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" onKeyUp="amount(this)"  onBlur="overFormat(this)">
+            <input type="tel" name="coMoney" value="${data.coMoney}" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" onKeyUp="amount(this)"  onBlur="overFormat(this)">
         </div>
     </div>
     <div class="layui-form-item">
       <label class="layui-form-label">优惠券条件</label>
       <div class="layui-input-inline">
-          <input type="tel" name="coLimit" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" onKeyUp="amount(this)"  onBlur="overFormat(this)">
+          <input type="tel" name="coLimit"  value="${data.coLimit}" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" onKeyUp="amount(this)"  onBlur="overFormat(this)">
       </div>
     </div>
-    <div class="layui-inline">
+    <div class="layui-form-item">
         <label class="layui-form-label">优惠券有效期至</label>
         <div class="layui-input-inline">
-            <input type="text" name="coValid" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+            <input type="text" name="coValid" value="${data.coValid?string("yyyy-MM-dd")}" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">优惠券数量</label>
         <div class="layui-input-inline">
-            <input type="tel" name="coNum" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" onKeyUp="amount(this)">
+            <input type="tel" name="coNum" value="${data.coNum}" lay-verify="title" autocomplete="off" placeholder="" class="layui-input" onKeyUp="amount(this)">
+        </div>
     </div>
-    </div>
-    <div class="layui-form-item">
+    <div class="layui-form-item">
+            <label class="layui-form-label">商品状态</label>
+            <div class="layui-input-block">
+                <input type="radio" name="coStates" value="1" title="可领取"  <#if data.coStates==1>checked </#if>>
+                <input type="radio" name="coStates" value="2" title="不可领取" <#if data.coStates==2>checked </#if>>
+            </div>
+
+        </div>
+  <div class="layui-form-item">
         <div class="layui-input-block">
-                    <button class="layui-btn"  style="width: 800px;" onclick="sub()">添加</button>
+                    <input class="layui-btn" type="button" value="更新优惠券" style="width: 800px;" onclick="sub()" />
         </div>
-    </div>
-</div>
+  </div>
 </form>
 <script>
+    layui.use('form', function(){
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        form.render();
+    });
     layui.use('laydate', function(){
         var laydate = layui.laydate;
         //执行一个laydate实例
@@ -54,30 +68,17 @@
     });
     function sub() {
         jQuery.ajax({
-            url:'insertCoupon',
+            url:'updateCouponS',
             type:'post',
             data:$("#cou").serialize(),
             success:function (data) {
-                if(data.code=="200"){
-                    layer.msg(data.msg, {
-                        icon: 6,//成功的表情
-                        time: 1000 //1秒关闭（如果不配置，默认是3秒）
-                    }, function(){
-                        location.reload();
-                    });
-                }else{
-                    layer.msg(data.msg, {
-                        icon: 5,//成功的表情
-                        time: 1000 //1秒关闭（如果不配置，默认是3秒）
-                    }, function(){
-                        location.reload();
-                    });
-                }
+                alert("成功回调");
             },
             error:function () {
                 alert("系统错误");
             }
-        });
+        })
+
     }
     /**
      * 实时动态强制更改用户录入

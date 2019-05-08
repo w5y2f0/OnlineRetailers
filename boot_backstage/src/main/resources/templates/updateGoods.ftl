@@ -129,12 +129,13 @@
                     <button type="button" class="layui-btn" id="test9">开始上传</button>
                     <button type="button" class="layui-btn" id="cleanImgs"> <i class="fa fa-trash-o fa-lg"></i>清空图片预览</button>
                 </div>
-                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                <blockquote class="layui-elem-quote layui-quote-nm" style=",.margin-top: 10px;">
                     预览图：
                     <div class="layui-upload-list" id="demo2">
                                     <#list qwer as data>
+                                        ${data}
                                         <input type="hidden" name = "piId" value="${data.piId}"/>
-                                        <img src="../imgs/${data.piUrl}" alt="${data.piUrl}" height="92px" width="92px" class="layui-upload-img uploadImgPreView">
+                                        <img src="${path}/imgs/${data.piUrl}" alt="${data.piUrl}" height="92px" width="92px" class="layui-upload-img uploadImgPreView">
                                     </#list>
                                 </div>
                 </blockquote>
