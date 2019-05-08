@@ -11,7 +11,7 @@
         <result column="re_term" jdbcType="INTEGER" property="reTerm"/>
     </resultMap>
     <sql id="Base_Column_List">
-       re_id, go_id,u_id, co_id, re_time, re_use, re_term
+      re_id, go_id,u_id, co_id, re_time, re_use, re_term
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
