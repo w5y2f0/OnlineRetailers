@@ -13,7 +13,7 @@ public class Coupon {
     private Double coMoney;
 
     private Double coLimit;
-@DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date coValid;
 
     private Integer coStates;
