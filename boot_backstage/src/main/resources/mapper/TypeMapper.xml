@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mr.type.mapper.TypeMapper">
   <resultMap id="BaseResultMap" type="com.mr.pojo.Type">
-    <id column="typr_id" jdbcType="INTEGER" property="typeId" />
+    <id column="type_id" jdbcType="INTEGER" property="typeId" />
     <result column="type_name" jdbcType="VARCHAR" property="typeName" />
   </resultMap>
 
   <!-- 查询所有 -->
-  <select id="selectAll" resultType="com.mr.pojo.Type">
+  <select id="selectAll" resultMap="BaseResultMap">
     select
-      typr_id,type_name
+      type_id,type_name
     from
       t_type
   </select>
@@ -17,11 +17,11 @@
   <!-- 根据编号查询 -->
   <select id="selectTypeById" parameterType="Integer" >
     select 
-     typr_id,type_name
+     type_id,type_name
     from
       t_type
     where
-      typr_id = #{typeId,jdbcType=INTEGER}
+      type_id = #{typeId,jdbcType=INTEGER}
   </select>
 
   <!-- 删除 -->
@@ -30,20 +30,19 @@
     from
       t_type
     where
-      typr_id = #{typeId,jdbcType=INTEGER}
+      type_id = #{typeId,jdbcType=INTEGER}
   </delete>
 
   <!-- 新增 -->
   <insert id="insertType" parameterType="com.mr.pojo.Type">
-    insert into t_type (typr_id, type_name)
-    values (#{typeId,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR})
+    INSERT INTO t_type(type_name) VALUES(#{typeName})
   </insert>
 
   <!-- 修改 -->
   <update id="updateType" parameterType="com.mr.pojo.Type">
     update t_type
     set type_name = #{typeName,jdbcType=VARCHAR}
-    where typr_id = #{typeId,jdbcType=INTEGER}
+    where type_id = #{typeId,jdbcType=INTEGER}
   </update>
 
 </mapper>
