@@ -107,4 +107,17 @@
   <select id="selectAll" resultType="com.mr.pojo.Coupon">
       select *  from t_coupon
   </select>
+  
+  <select id="selectCouponVo" resultType="com.mr.pojo.CouponVo">
+    SELECT
+      c.`co_id` as coId,
+      c.`co_money` AS coMoney,
+      c.`co_limit` AS coLimit,
+      c.`co_valid` AS coValid,
+      r.`re_time` AS reTime,
+      r.`re_use` AS reUse,
+      r.`re_term` AS reTerm
+    FROM t_coupon c,t_receive r
+    WHERE c.`co_id`=r.`co_id`
+  </select>
 </mapper>
