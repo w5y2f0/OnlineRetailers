@@ -110,6 +110,7 @@
   
   <select id="selectCouponVo" resultType="com.mr.pojo.CouponVo">
     SELECT
+      r.`re_id` AS reId,
       c.`co_id` as coId,
       c.`co_money` AS coMoney,
       c.`co_limit` AS coLimit,
