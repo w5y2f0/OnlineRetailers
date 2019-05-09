@@ -1,5 +1,6 @@
 package com.mr.pojo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,6 +16,18 @@ public class CouponVo {
     private Integer reUse;//使用状态
     private Integer reTerm;//过期状态
 
+
+    private String getReTimeStr(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String format1 = format.format(reTerm);
+        return format1;
+    }
+
+    private String getCoValidStr(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String format1 = format.format(coValid);
+        return format1;
+    }
     @Override
     public String toString() {
         return "CouponVo{" +
