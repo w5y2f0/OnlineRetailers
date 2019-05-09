@@ -24,6 +24,14 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
+
+
+    //去查询页面
+    @RequestMapping("toSelect")
+    public String toSelect(){
+        return "address/list_address";
+    }
+
     @RequestMapping("selectAll")
     @ResponseBody
     public DataGridVo selectAll(Page page) {
@@ -43,7 +51,7 @@ public class AddressController {
 
     @RequestMapping("addAddress")
     @ResponseBody
-    public void addAddress(@RequestBody Address address) {
+    public void addAddress( Address address) {
         addressService.addAddress(address);
     }
 
@@ -51,6 +59,12 @@ public class AddressController {
     @ResponseBody
     public ResultVo deleteAddress(@RequestBody Integer aId) {
         return addressService.deleteById(aId);
+    }
+
+    @RequestMapping("deleteAddressTest")
+    @ResponseBody
+    public ResultVo deleteAddressTest(Integer id){
+        return addressService.deleteAddressTest(id);
     }
 
     @RequestMapping("updateAddress")
