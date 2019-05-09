@@ -38,6 +38,7 @@ public class CouponController {
     }
 
     @RequestMapping("selectCouponVo")
+    @ResponseBody
     public List<CouponVo> selectAll(){
         return couponService.selectAll();
     }
