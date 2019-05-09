@@ -2,6 +2,7 @@ package com.mr.coupon.service;
 
 import com.github.pagehelper.PageHelper;
 import com.mr.pojo.Coupon;
+import com.mr.pojo.CouponVo;
 import com.mr.utils.Page;
 import com.mr.utils.ResultVo;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public interface  CouponService {
     public List<Coupon> selectAll(Page page);
-    public List<Coupon> selectAll();
+    public List<CouponVo> selectAll();
     public ResultVo insertCoupon(Coupon coupon);
     public ResultVo deleteCoupon(String id);
     public Coupon selectById(String id);

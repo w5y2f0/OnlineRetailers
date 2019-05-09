@@ -3,6 +3,7 @@ package com.mr.coupon.controller;
 import com.github.pagehelper.PageHelper;
 import com.mr.coupon.service.CouponService;
 import com.mr.pojo.Coupon;
+import com.mr.pojo.CouponVo;
 import com.mr.utils.Page;
 import com.mr.utils.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,8 @@ public class CouponController {
         return resultMap;
     }
 
-    @RequestMapping("selectAllCoupon")
-    public List<Coupon> selectAll(){
+    @RequestMapping("selectCouponVo")
+    public List<CouponVo> selectAll(){
         return couponService.selectAll();
     }
 

@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.mr.coupon.mapper.CouponMapper;
 import com.mr.coupon.service.CouponService;
 import com.mr.pojo.Coupon;
+import com.mr.pojo.CouponVo;
 import com.mr.utils.Page;
 import com.mr.utils.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class CouponServiceImpl implements CouponService {
     }
 
     @Override
-    public List<Coupon> selectAll() {
-        return couponMapper.selectAll();
+    public List<CouponVo> selectAll() {
+        return couponMapper.selectCouponVo();
     }
 
     public ResultVo insertCoupon(Coupon coupon){
