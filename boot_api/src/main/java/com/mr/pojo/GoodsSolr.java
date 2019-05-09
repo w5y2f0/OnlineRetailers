@@ -2,55 +2,38 @@ package com.mr.pojo;
 
 import org.apache.solr.client.solrj.beans.Field;
 
-import javax.annotation.sql.DataSourceDefinition;
-import javax.swing.*;
 import java.util.Date;
-import java.util.List;
 
-/**
- * Created by 黄圣博 on 2019/5/6.
- */
-public class GoodsVo {
-    private Integer goId;
+public class GoodsSolr {
 
+    @Field("go_id")
+    private String goId;
+    @Field("go_name")
     private String goName;
-
+    @Field("go_synopsis")
     private String goSynopsis;
-
+    @Field("go_detailed")
     private String goDetailed;
-
+    @Field("go_type")
     private Integer goType;
-
+    @Field("go_states")
     private Integer goStates;
-
+    @Field("go_datetimes")
     private Date goDatetimes;
-
+    @Field("go_sales")
     private Integer goSales;
-
+    @Field("go_old")
     private Double goOld;
-
+    @Field("go_new")
     private Double goNew;
-
+    @Field("go_num")
     private Integer goNum;
 
-    private Integer parId;
-
-    private String paColor;
-
-    private Integer paWeight;
-
-    private String goSpecs;
-
-    private String goMaterial;
-
-    private String goPacking;
-
-    private String piUrl;
-
-    public GoodsVo() {
+    public GoodsSolr() {
     }
 
-    public GoodsVo(Integer goId, String goName, String goSynopsis, String goDetailed, Integer goType, Integer goStates, Date goDatetimes, Integer goSales, Double goOld, Double goNew, Integer goNum, Integer parId, String paColor, Integer paWeight, String goSpecs, String goMaterial, String goPacking, String piUrl) {
+    public GoodsSolr(String goId, String goName, String goSynopsis, String goDetailed, Integer goType, Integer goStates, Date goDatetimes, Integer goSales, Double goOld, Double goNew, Integer goNum) {
+
         this.goId = goId;
         this.goName = goName;
         this.goSynopsis = goSynopsis;
@@ -62,19 +45,12 @@ public class GoodsVo {
         this.goOld = goOld;
         this.goNew = goNew;
         this.goNum = goNum;
-        this.parId = parId;
-        this.paColor = paColor;
-        this.paWeight = paWeight;
-        this.goSpecs = goSpecs;
-        this.goMaterial = goMaterial;
-        this.goPacking = goPacking;
-        this.piUrl = piUrl;
     }
 
     @Override
     public String toString() {
-        return "GoodsVo{" +
-                "goId=" + goId +
+        return "GoodsSolr{" +
+                "goId='" + goId + '\'' +
                 ", goName='" + goName + '\'' +
                 ", goSynopsis='" + goSynopsis + '\'' +
                 ", goDetailed='" + goDetailed + '\'' +
@@ -85,21 +61,14 @@ public class GoodsVo {
                 ", goOld=" + goOld +
                 ", goNew=" + goNew +
                 ", goNum=" + goNum +
-                ", parId=" + parId +
-                ", paColor='" + paColor + '\'' +
-                ", paWeight=" + paWeight +
-                ", goSpecs='" + goSpecs + '\'' +
-                ", goMaterial='" + goMaterial + '\'' +
-                ", goPacking='" + goPacking + '\'' +
-                ", piUrl=" + piUrl +
                 '}';
     }
 
-    public Integer getGoId() {
+    public String getGoId() {
         return goId;
     }
 
-    public void setGoId(Integer goId) {
+    public void setGoId(String goId) {
         this.goId = goId;
     }
 
@@ -181,61 +150,5 @@ public class GoodsVo {
 
     public void setGoNum(Integer goNum) {
         this.goNum = goNum;
-    }
-
-    public Integer getParId() {
-        return parId;
-    }
-
-    public void setParId(Integer parId) {
-        this.parId = parId;
-    }
-
-    public String getPaColor() {
-        return paColor;
-    }
-
-    public void setPaColor(String paColor) {
-        this.paColor = paColor;
-    }
-
-    public Integer getPaWeight() {
-        return paWeight;
-    }
-
-    public void setPaWeight(Integer paWeight) {
-        this.paWeight = paWeight;
-    }
-
-    public String getGoSpecs() {
-        return goSpecs;
-    }
-
-    public void setGoSpecs(String goSpecs) {
-        this.goSpecs = goSpecs;
-    }
-
-    public String getGoMaterial() {
-        return goMaterial;
-    }
-
-    public void setGoMaterial(String goMaterial) {
-        this.goMaterial = goMaterial;
-    }
-
-    public String getGoPacking() {
-        return goPacking;
-    }
-
-    public void setGoPacking(String goPacking) {
-        this.goPacking = goPacking;
-    }
-
-    public String getPiUrl() {
-        return piUrl;
-    }
-
-    public void setPiUrl(String piUrl) {
-        this.piUrl = piUrl;
     }
 }

@@ -1,28 +1,31 @@
 package com.mr.pojo;
 
+import org.apache.solr.client.solrj.beans.Field;
+
 import java.util.Date;
 
 public class Goods {
+    @Field("go_id")
     private Integer goId;
-
+    @Field("go_name")
     private String goName;
-
+    @Field("go_synopsis")
     private String goSynopsis;
-
+    @Field("go_detailed")
     private String goDetailed;
-
+    @Field("go_type")
     private Integer goType;
-
+    @Field("go_states")
     private Integer goStates;
-
+    @Field("go_datetimes")
     private Date goDatetimes;
-
+    @Field("go_sales")
     private Integer goSales;
-
+    @Field("go_old")
     private Double goOld;
-
+    @Field("go_new")
     private Double goNew;
-
+    @Field("go_num")
     private Integer goNum;
 
     @Override
