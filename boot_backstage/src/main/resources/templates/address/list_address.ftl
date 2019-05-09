@@ -186,7 +186,7 @@
             type:'post',
             url:'addAddress',
             data:$("#addAddressForm").serialize(),
-            dataType:"json",77
+            dataType:"json",
             success: function(msg) {
                 alert("新增成功！！！");
                 //重新加载父页面
