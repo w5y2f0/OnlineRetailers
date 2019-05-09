@@ -3,7 +3,11 @@ package com.mr.index.controller;
 import com.mr.address.Address;
 import com.mr.address.service.AddressService;
 import com.mr.index.service.IndexService;
+import com.mr.pojo.CouponVo;
 import com.mr.pojo.Goods;
+import com.mr.pojo.GoodsSolr;
+import com.mr.pojo.GoodsVo;
+import com.mr.receive.service.ReceiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +21,23 @@ import java.util.List;
  */
 @Controller
 public class indexController {
-
+    @Autowired
+    private ReceiveService receiveService;
     @Autowired
     private IndexService indexService;
 
     @Autowired
     private AddressService addressService;
+
+    @RequestMapping("toReceive")
+    public ModelAndView selectReceive() {
+        ModelAndView view = new ModelAndView("coupon");
+
+        List<CouponVo> couponVoList = receiveService.selectCouponVo();
+
+        view.addObject("couponVoList", couponVoList);
+        return view;
+    }
 
     @RequestMapping("shopcart")
     public ModelAndView toShopCart() {
@@ -49,8 +64,12 @@ public class indexController {
     }
 
     @RequestMapping("toSearch")
-    public ModelAndView toSearch() {
+    public ModelAndView toSearch(String name) {
+        List<GoodsSolr> goods = indexService.selectsolr(name);
+        System.err.println(goods);
+
         ModelAndView view = new ModelAndView("search");
+        view.addObject("data",goods);
         return view;
     }
 
@@ -93,5 +112,12 @@ public class indexController {
     @ResponseBody
     public void deleteAddress(Integer aId){
         addressService.deleteAddress(aId);
+    }
+
+    @RequestMapping("Search")
+    @ResponseBody
+    public List Search(String type) {
+        List<GoodsVo> goods = indexService.selectByType(type);
+        return goods;
     }
 }
