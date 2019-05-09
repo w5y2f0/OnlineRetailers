@@ -10,6 +10,8 @@ public class Receive {
 
     private Integer goId;
 
+    private Integer uId;
+
     private Integer coId;
 
     private Date reTime;
@@ -17,6 +19,15 @@ public class Receive {
     private Integer reUse;
 
     private Integer reTerm;
+
+
+    public Integer getUId() {
+        return uId;
+    }
+
+    public void setUId(Integer uId) {
+        this.uId = uId;
+    }
 
     public Integer getReId() {
         return reId;
