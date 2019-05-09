@@ -1,9 +1,10 @@
 package com.mr.index.service;
 
 import com.mr.pojo.Goods;
+import com.mr.pojo.GoodsSolr;
+import com.mr.pojo.GoodsVo;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,4 +19,10 @@ public interface IndexService {
 
     @RequestMapping(value = "/foot/addFoot")
     void addFoot(Goods goods);
+
+    @RequestMapping(value = "/goods/selectByType",method = RequestMethod.GET)
+    List<GoodsVo> selectByType(@RequestParam("type") String type);
+
+    @RequestMapping(value = "/goods/selectsolr",method = RequestMethod.GET)
+    List<GoodsSolr> selectsolr(@RequestParam("name") String name);
 }
