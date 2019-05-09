@@ -62,6 +62,10 @@ public class CouponController {
         ResultVo resultVo = couponService.deleteCoupon(id);
         return resultVo;
     }
+    @RequestMapping("deleteCouponVo")
+    public void deleteCouponVo(@RequestParam("id") String id) {
+        couponService.deleteCoupon(id);
+    }
 
     @GetMapping("selectById")
     @ResponseBody
