@@ -24,4 +24,5 @@ public interface AddressService {
 
     Address selectById(Integer aId);
 
+    ResultVo deleteAddressTest(Integer id);
 }

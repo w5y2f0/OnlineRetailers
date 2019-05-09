@@ -22,10 +22,8 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.mr.address.Address">
-    insert into t_address (id, u_id, address_name, 
-      address_phone, address)
-    values (#{id,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{addressName,jdbcType=VARCHAR}, 
-      #{addressPhone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
+    insert into t_address ( u_id, address_name,address_phone, address)
+    values ( #{uId,jdbcType=INTEGER}, #{addressName,jdbcType=VARCHAR},#{addressPhone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.mr.address.Address">
     insert into t_address
