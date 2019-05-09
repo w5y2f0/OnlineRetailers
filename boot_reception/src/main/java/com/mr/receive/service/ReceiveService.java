@@ -23,6 +23,6 @@ public interface ReceiveService {
     List<CouponVo> selectCouponVo();
 
     @RequestMapping(value = "/coupon/deleteCouponVo")
-    void deleteCoupon(@RequestParam String id);
+    void deleteCoupon(@RequestParam("id") String id);
 
 }
