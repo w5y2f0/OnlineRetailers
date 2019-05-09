@@ -2,18 +2,22 @@ package com.mr.good.controller;
 
 import com.mr.parameter.service.ParameterService;
 import com.mr.picture.service.PictureService;
-import com.mr.pojo.Goods;
+import com.mr.pojo.*;
 import com.mr.good.service.GoodService;
-import com.mr.pojo.GoodsVo;
-import com.mr.pojo.Parameter;
-import com.mr.pojo.Picture;
 import com.mr.utils.Page;
 import com.mr.utils.ResultVo;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.awt.print.Book;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -61,6 +65,7 @@ public class GoodController {
         Integer goId = goods.getGoId();
         String[] urls = imgUrls.split(",");
 //        Parameter pa = new Parameter();
+        parameter.setGoId(goId);
         parameterService.insertParameter(parameter);
         for (int i = 0; i < urls.length; i++) {
 //            System.out.println("图片名称："+urls[i].substring(15));
@@ -70,6 +75,8 @@ public class GoodController {
             pi.setPiOrder(i);
             pictureService.insertPicture(pi);
         }
+        GoodsSolr gv = new GoodsSolr(goods.getGoId().toString(), goods.getGoName(), goods.getGoSynopsis(), goods.getGoDetailed(), goods.getGoType(), goods.getGoStates(), goods.getGoDatetimes(), goods.getGoSales(), goods.getGoOld(), goods.getGoNew(), goods.getGoNum());
+        addsolr(gv);
         return resultVo;
     }
 
@@ -77,6 +84,19 @@ public class GoodController {
     @ResponseBody
     public ResultVo deleteGood(String id) {
         ResultVo resultVo = goodService.deleteGood(id);
+        HttpSolrClient solrClient = new HttpSolrClient.Builder()
+//设置solr的地址,http://127.0.0.1:8080/solr为项目路径,car为核的名字
+                .withBaseSolrUrl("http://127.0.0.1:8088/solr/goods")
+                .build();
+        try {
+            solrClient.deleteById(id);
+            solrClient.commit();
+            solrClient.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SolrServerException e) {
+            e.printStackTrace();
+        }
         return resultVo;
     }
 
@@ -127,10 +147,9 @@ public class GoodController {
         mav.setViewName("updateGoods");
         return mav;
     }
-    @GetMapping("selectByType")
-    @ResponseBody
-    public List<GoodsVo> selectByType(String Type){
-        List<Goods> goods = goodService.selectByType(Type);
+    @RequestMapping(value = "selectByType",method = RequestMethod.GET)
+    public List<GoodsVo> selectByType( String type){
+        List<Goods> goods = goodService.selectByType(type);
         List<GoodsVo> list = new ArrayList<>();
         for (int i = 0; i <goods.size() ; i++) {
             Parameter parameter = parameterService.selectByIdS(goods.get(i).getGoId().toString());
@@ -145,8 +164,7 @@ public class GoodController {
         }
         return list;
     }
-    @GetMapping("selectByState")
-    @ResponseBody
+    @RequestMapping("selectByState")
     public List<GoodsVo> selectByState(String State){
         List<Goods> goods = goodService.selectByState(State);
         List<GoodsVo> list = new ArrayList<>();
@@ -162,5 +180,57 @@ public class GoodController {
             list.add(gv);
         }
         return list;
+    }
+    @RequestMapping(value = "addsolr",method = RequestMethod.GET)
+    public void addsolr(GoodsSolr goodsSolr){
+        HttpSolrClient solrClient = new HttpSolrClient.Builder()
+//设置solr的地址,http://127.0.0.1:8080/solr为项目路径,car为核的名字
+                .withBaseSolrUrl("http://127.0.0.1:8088/solr/goods")
+                .build();
+        try {
+            goodsSolr.setGoId("1234");
+            goodsSolr.setGoName("12414");
+            solrClient.addBean(goodsSolr);
+            solrClient.commit();
+            solrClient.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SolrServerException e) {
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping(value = "selectsolr")
+    @ResponseBody
+    public List<GoodsSolr> selectsolr(@RequestParam("name") String name){
+        HttpSolrClient solrClient = new HttpSolrClient.Builder()
+//设置solr的地址,http://127.0.0.1:8080/solr为项目路径,car为核的名字
+                .withBaseSolrUrl("http://127.0.0.1:8088/solr/goods")
+                .build();
+        SolrQuery sq = new SolrQuery();
+        sq.setQuery("go_name:"+name)
+                .setHighlight(true)
+                .setHighlightSimplePost("</font>")
+                .setHighlightSimplePre("<font color = 'red'>")
+                .addHighlightField("go_name");
+        QueryResponse query = null;
+        try {
+            query = solrClient.query(sq);
+        } catch (SolrServerException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<GoodsSolr> beans = query.getBeans(GoodsSolr.class);
+        System.err.println(beans);
+        Map<String, Map<String, List<String>>> highlighting = query.getHighlighting();
+        System.err.println(highlighting);
+        if (beans != null) {
+            for (int i = 0; i < beans.size(); i++) {
+                String id = beans.get(i).getGoId().toString();
+                String book_name = highlighting.get(id).get("go_name").get(0);
+                beans.get(i).setGoName(book_name);
+            }
+        }
+        return beans;
     }
 }
