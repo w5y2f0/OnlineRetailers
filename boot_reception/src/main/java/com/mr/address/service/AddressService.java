@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 /**
- * Created by Fan on 2019/5/7.
+ * Fan on 2019/5/7.
  */
 @FeignClient(value = "PROVIDER")
 public interface AddressService {
