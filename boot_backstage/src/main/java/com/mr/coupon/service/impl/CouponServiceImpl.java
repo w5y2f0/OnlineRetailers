@@ -24,6 +24,12 @@ public class CouponServiceImpl implements CouponService {
         List<Coupon> coupons = couponMapper.selectAll();
         return coupons;
     }
+
+    @Override
+    public List<Coupon> selectAll() {
+        return couponMapper.selectAll();
+    }
+
     public ResultVo insertCoupon(Coupon coupon){
         int insert = couponMapper.insert(coupon);
         if(insert>0){

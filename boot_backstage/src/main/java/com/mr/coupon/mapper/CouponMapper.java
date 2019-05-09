@@ -1,6 +1,7 @@
 package com.mr.coupon.mapper;
 
 import com.mr.pojo.Coupon;
+import com.mr.pojo.CouponVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface CouponMapper  {
     int updateByPrimaryKey(Coupon record);
 
     List<Coupon> selectAll();
+
+    List<CouponVo> selectCouponVo();
 }

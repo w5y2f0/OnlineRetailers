@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface  CouponService {
     public List<Coupon> selectAll(Page page);
+    public List<Coupon> selectAll();
     public ResultVo insertCoupon(Coupon coupon);
     public ResultVo deleteCoupon(String id);
     public Coupon selectById(String id);

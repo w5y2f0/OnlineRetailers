@@ -23,52 +23,64 @@ import java.util.Map;
 public class CouponController {
     @Autowired
     private CouponService couponService;
-@GetMapping("selectAll")
-@ResponseBody
-    public  Map<String,Object> selectAll(Page page){
+
+    @GetMapping("selectAll")
+    @ResponseBody
+    public Map<String, Object> selectAll(Page page) {
         List<Coupon> coupons = couponService.selectAll(page);
-    Map<String,Object> resultMap = new HashMap<String, Object>();
-    resultMap.put("code",0);
-    resultMap.put("msg","");
-    resultMap.put("count",coupons.size());
-    resultMap.put("data",coupons);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("code", 0);
+        resultMap.put("msg", "");
+        resultMap.put("count", coupons.size());
+        resultMap.put("data", coupons);
         return resultMap;
     }
+
+    @RequestMapping("selectAllCoupon")
+    public List<Coupon> selectAll(){
+        return couponService.selectAll();
+    }
+
     @GetMapping("addCoupon")
-    public String  addGoods(){
+    public String addGoods() {
         return "addCoupon";
     }
+
     @PostMapping("insertCoupon")
     @ResponseBody
-    public ResultVo insertCoupon(Coupon coupon){
+    public ResultVo insertCoupon(Coupon coupon) {
         coupon.setCoStates(1);
         ResultVo resultVo = couponService.insertCoupon(coupon);
         return resultVo;
     }
+
     @PostMapping("deleteCoupon")
     @ResponseBody
-    public ResultVo deleteCoupon(String id){
+    public ResultVo deleteCoupon(String id) {
         ResultVo resultVo = couponService.deleteCoupon(id);
         return resultVo;
     }
+
     @GetMapping("selectById")
     @ResponseBody
-    public Coupon selectById(String id){
+    public Coupon selectById(String id) {
         Coupon coupon = couponService.selectById(id);
         return coupon;
     }
+
     @GetMapping("selectByIds")
     @ResponseBody
-    public ModelAndView  selectByIdS(String id){
+    public ModelAndView selectByIdS(String id) {
         Coupon coupon = couponService.selectById(id);
         ModelAndView mav = new ModelAndView();
-        mav.addObject("data",coupon);
+        mav.addObject("data", coupon);
         mav.setViewName("updateCoupon");
         return mav;
     }
+
     @PostMapping("updateCouponS")
     @ResponseBody
-    public ResultVo updateCoupon(Coupon coupon){
+    public ResultVo updateCoupon(Coupon coupon) {
         ResultVo resultVo = couponService.updateCoupon(coupon);
         return resultVo;
     }
