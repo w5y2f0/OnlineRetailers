@@ -69,7 +69,7 @@ public class indexController {
         System.err.println(goods);
 
         ModelAndView view = new ModelAndView("search");
-        view.addObject("data",goods);
+        view.addObject("data", goods);
         return view;
     }
 
@@ -110,7 +110,7 @@ public class indexController {
 
     @RequestMapping("deleteAddress")
     @ResponseBody
-    public void deleteAddress(Integer aId){
+    public void deleteAddress(Integer aId) {
         addressService.deleteAddress(aId);
     }
 
@@ -120,4 +120,11 @@ public class indexController {
         List<GoodsVo> goods = indexService.selectByType(type);
         return goods;
     }
+
+    @RequestMapping("deleteCoupon")
+    @ResponseBody
+    public void deleteCoupon(Integer id) {
+        receiveService.deleteCoupon(id.toString());
+    }
+
 }
