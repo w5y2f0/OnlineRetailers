@@ -25,6 +25,12 @@ public class ReceiveServiceImpl implements ReceiveService {
         List<Receive> list= receiveMapper.selectAll();
         return list;
     }
+
+    @Override
+    public List<Receive> selectAll() {
+        return receiveMapper.selectAll();
+    }
+    @Override
     public ResultVo insertReceive(Receive parameter){
         int insert = receiveMapper.insert(parameter);
         if(insert>0){

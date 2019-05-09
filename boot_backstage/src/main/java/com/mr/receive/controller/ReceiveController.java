@@ -23,40 +23,51 @@ public class ReceiveController {
 
     @GetMapping("selectAll")
     @ResponseBody
-    public Map<String,Object> selectAll(Page page){
+    public Map<String, Object> selectAll(Page page) {
         List<Receive> coupons = receiveService.selectAll(page);
-        Map<String,Object> resultMap = new HashMap<String, Object>();
-        resultMap.put("code",0);
-        resultMap.put("msg","");
-        resultMap.put("count",coupons.size());
-        resultMap.put("data",coupons);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("code", 0);
+        resultMap.put("msg", "");
+        resultMap.put("count", coupons.size());
+        resultMap.put("data", coupons);
         return resultMap;
     }
+
+
+    @RequestMapping("selectReceive")
+    public List<Receive> selectAll() {
+        return receiveService.selectAll();
+    }
+
     @GetMapping("addReceive")
-    public String  addGoods(){
+    public String addGoods() {
         return "addCoupon";
     }
+
     @PostMapping("insertReceive")
     @ResponseBody
-    public ResultVo insertReceive(Receive receive){
+    public ResultVo insertReceive(Receive receive) {
         ResultVo resultVo = receiveService.insertReceive(receive);
         return resultVo;
     }
+
     @PostMapping("deleteReceive")
     @ResponseBody
-    public ResultVo deleteReceive(String id){
+    public ResultVo deleteReceive(String id) {
         ResultVo resultVo = receiveService.deleteReceive(id);
         return resultVo;
     }
+
     @GetMapping("selectById")
     @ResponseBody
-    public Receive selectById(String id){
+    public Receive selectById(String id) {
         Receive coupon = receiveService.selectById(id);
         return coupon;
     }
+
     @PostMapping("updateReceive")
     @ResponseBody
-    public ResultVo updateCoupon(Receive receive){
+    public ResultVo updateCoupon(Receive receive) {
         ResultVo resultVo = receiveService.updateReceive(receive);
         return resultVo;
     }

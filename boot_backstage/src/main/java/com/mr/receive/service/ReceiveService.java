@@ -13,6 +13,7 @@ import java.util.List;
 public interface ReceiveService {
 
     public List<Receive> selectAll(Page page);
+    public List<Receive> selectAll();
     public ResultVo insertReceive(Receive parameter);
     public ResultVo deleteReceive(String id);
     public Receive selectById(String id);
