@@ -40,6 +40,7 @@ public class AddressServiceImpl  implements AddressService{
 
     @Override
     public ResultVo addAddress(Address address) {
+
         addressMapper.insert(address);
         return ResultVo.success("增加成功");
     }
@@ -59,5 +60,11 @@ public class AddressServiceImpl  implements AddressService{
     @Override
     public Address selectById(Integer aId) {
         return addressMapper.selectByPrimaryKey(aId);
+    }
+
+    @Override
+    public ResultVo deleteAddressTest(Integer id) {
+       addressMapper.deleteByPrimaryKey(id);
+       return ResultVo.success("删除成功！！！");
     }
 }
