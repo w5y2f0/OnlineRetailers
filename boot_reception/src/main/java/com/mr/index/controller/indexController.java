@@ -65,6 +65,9 @@ public class indexController {
 
     @RequestMapping("toSearch")
     public ModelAndView toSearch(String name) {
+        if(null == name|| name.equals("")){
+            name="*";
+        }
         List<GoodsSolr> goods = indexService.selectsolr(name);
         System.err.println(goods);
 
