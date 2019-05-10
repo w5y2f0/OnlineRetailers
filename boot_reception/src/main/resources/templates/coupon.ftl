@@ -111,7 +111,6 @@
                         <li><a href="#tab2">已用/过期优惠券</a></li>
 
                     </ul>
-
                     <div class="am-tabs-bd">
                         <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                             <div class="coupon-items">
@@ -313,9 +312,7 @@
                     <li><a href="news.html">消息</a></li>
                 </ul>
             </li>
-
         </ul>
-
     </aside>
 </div>
 <script>
@@ -332,12 +329,7 @@
                 },
             });
         }
-        else {
-            document.write("JS功能强大，要学习噢!");
-        }
-
     }
 </script>
 </body>
-
 </html>
